@@ -1,0 +1,139 @@
+when clicking on items 
+u see if they are chef's special
+name , price , rating , how many ppl fed , time required
+description abt the food
+allow them to select the spice level
+form
+mid , traditional , fiery awaze -- heat and spice level
+teff and barley , brown teff -- injera base
+ayib , gomen , awaze ,  egg -- side accents
+
+allow them to add - tej and timatim fitfit 
+when they click + then they will update the cart - horizontally scrollable
+
+things that update the cart are distributed in the selection forma and in the drinks
+
+
+History of the dish 
+so the local forms will update the local state object 
+but when state changes if we redraw everything then it will be slow
+so we use useRef for the storage
+when the plus button is clicked then create a way to notify the user he has added that
+
+on top there will be cart state that will always display the length of items
+cart - state - length of things - that will be shared by the whole food section
+
+
+people can also mark a dish as their favorite
+
+
+
+on the home screen
+first if sthg is a special selection it shld be at the top
+special selection box
+
+in the home page - box - for reservation
+food description and image + price and reserve for table button
+
+different categories
+all special , highland stews , sizzling tibs , tsom , cellar and buna
+when this is clicked then it will update the bottom part
+so have that button holder and the container share a parent that wld lift the state
+
+food cards
+image , on top of image it says its description
+chef's special... , rating , Name , descriotion , classification , time , quick-add button to add to cart
+i was thinking for the quick cart button to display when it is clicked
+
+
+then the spirit of gursha description 
+it will have a heart to add some injera for gursha
+
+Coffeee ceremony reservation
+two reservation - for coffee and table
+
+
+on the bottom there is a navigation for
+specials , menu , cart , account
+
+once they have set up the cart
+for delivery
+steps - 
+
+step one
+For Bole and Kazanchis fee = 0 , complimentary delivery unlocked
+it will show u ur order and if you want to update your order 
+on every order - image , name , additional things , amount updater or remove button on top
+
+when u click proceed to checkout u will go to step 2 
+this btn will include the total price
+
+u show tge dineeing etiquete mnamn
+Payment summary
+total number of dishes
+items total 
+100% teff upgrate
+plak box
+delivery fee
+promo code applied = - some amt of birr
+Grand total
+
+step two
+Form - for recipient contact
+Name and phone number
+delivery destination
+drop down
+sub city and house number , landmark
+
+Confirm order and pay - total price will be displayed here
+when u confirm order - immediate or dinner selection
+
+Payment method
+Tellebirr
+CBE
+Cash / wireless POS
+Amole / Awash birr
+
+A list of items 
+pic , name , price of one , anything extra added
+items subtotal
+delivery fee / courier dispatch
+total
+it will show if you asked for complimentary things
+
+
+Menu 
+
+search bar 
+category filter too 
+100 % pure teff injera , fasting / tsom , berbere spiced
+all this filters will be applied to the menu box
+the filters will have the total number of food in that category
+
+food box - name , image , tag , description , price , plus button
+once you select things then u will click view basket - to go to the cart
+and in that button - u will see the total selected items , total price
+
+
+
+Account part
+
+The first part is welcome to mesob table
+log in 
+Continue with google or phone/email
+button to change the state of the below
+mobile , email
+password / pin
+sign into mesob house
+continue as a guest
+
+that will be the first screen
+
+or register cards
+
+Member benefits , 
+if they are member only then kazanchis and bole drop
+10 gursha points for every 100 points
+Jebena buna roasting
+
+slogan
