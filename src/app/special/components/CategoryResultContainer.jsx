@@ -85,7 +85,7 @@ export default function CategoryResultContainer(){
                     <h6>Simmered Fresh</h6>
 
                     {/* for every item in displayed Special create a special container */}
-                    {/* whenever the category gets clicked then it will update the displayed things which intern wld update the view */}
+                    {/* whenever the category gets clicked then it will update the displayed things which intern wld update. */}
                     {
                         displayedSpecials.forEach(
                             item => <SpecialContainerBox container={item}></SpecialContainerBox>
