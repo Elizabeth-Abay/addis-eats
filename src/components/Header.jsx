@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { RESTAURANT_NAME } from "../../constants/variables";
-import { CartContext } from "../../providers/CartProvider";
-import CartButton from "../CartButton";
+import { RESTAURANT_NAME } from "../constants/variables";
+import { CartContext } from "../providers/CartProvider";
+import CartButton from "./CartButton";
 
 
 // will need access to the cart State

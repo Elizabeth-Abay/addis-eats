@@ -1,12 +1,12 @@
-import CategoryResultContainer from "./CategoryResultContainer";
-import DailyRitual from "./DailyRitual";
-import FeatureHead from "./FeatureHead";
-import ReserveTable from "./ReserveTable";
-import SpecialSelectionCard from "./SpecialSelectionCard";
-import SpiritOfGursha from "./SpiritOfGursha";
+import CategoryResultContainer from "../components/CategoryResultContainer";
+import DailyRitual from "../components/DailyRitual";
+import FeatureHead from "../components/FeatureHead";
+import ReserveTable from "../components/ReserveTable";
+import SpecialSelectionCard from "../components/SpecialSelectionCard";
+import SpiritOfGursha from "../components/SpiritOfGursha";
 
 
-export default function FeatureSelection(){
+export default function SpecialPage(){
     // ! add the order and add to cart buttons at top
     // we pass that to the input 
     return (

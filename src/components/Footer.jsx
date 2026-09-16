@@ -1,6 +1,6 @@
 import { HiOutlineFire, HiOutlineUser } from "react-icons/hi2";
 import { LuUtensilsCrossed } from "react-icons/lu";
-import CartButton from "../CartButton";
+import CartButton from "./CartButton";
 
 export default function Footer(){
     return (
