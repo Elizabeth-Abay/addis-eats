@@ -1,0 +1,28 @@
+import { addToCart } from "../../../handlers/CartHandler"
+
+
+export default function SpecialContainerBox({ container }){
+    let { id , slug , nameEn , nameAm , category, priceETB , spiceLevel , isFasting , isSpecial , description ,ingredients , servings } = container
+
+    return (
+        // ! when this div gets clicked then I want it to push the new page on it
+        <div className="special-container-box">
+            {/* in the quick add we will attach the id and have the onclick here */}
+            <button className="category-pill-on-special">{category}</button>
+            {isFasting ? <button className="category-pill-on-special">Tsom</button> : null}
+            <button className="category-pill-on-special">{slug}</button>
+            <h1>{nameEn}</h1>
+            <h2>{nameAm}</h2>
+            <p>{description}</p>
+
+            <h3>{priceETB} / portion</h3>
+
+            <p>{servings}</p>
+
+            {/* addToCart({ id , name , amount , price , customOrder}) */}
+            {/* when it gets clicked pass the given categories to a different page */}
+            <button onClick={ ()=> addToCart({id , name : nameEn , amount : 1 ,price , customOrder : "" })}> + Quick Add</button>
+
+        </div>
+    )
+}

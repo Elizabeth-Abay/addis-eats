@@ -1,5 +1,6 @@
 // we will write the add , remove and clear reservation logics in here
 import { useContext } from "react";
+import { RESERVE_FOR_FEAST, RESERVER_FOR_COFFEE } from "../constants/variables";
 import { ReservationContext } from "../providers/ReservationProvider";
 
 let { reservation , setReservation } = useContext(ReservationContext);
@@ -10,8 +11,10 @@ let { reservation , setReservation } = useContext(ReservationContext);
 // ! maybe have a state for that as well
 
 
-export function addReservation({ type , numOfSeats , pricePerSeat }){
+// price cld be set up and be constant instead of sthg passed from outside
+export function addReservation({ type , numOfSeats }){
     // add the reservation with id
+    let pricePerSeat = (type === 'coffee') ? RESERVER_FOR_COFFEE : RESERVE_FOR_FEAST
     setReservation( (previous) => {
         // it is an array of objects
         // { type , numOfSeats , pricePerSeat }
