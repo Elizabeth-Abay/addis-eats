@@ -1,8 +1,12 @@
-import { addToCart } from "../../../handlers/CartHandler"
+// I gotta use Context of cart Provider
+import { CartContext } from "@/providers/CartProvider"
+import { useContext } from "react"
 
 
 export default function SpecialContainerBox({ container }){
     let { id , slug , nameEn , nameAm , category, priceETB , spiceLevel , isFasting , isSpecial , description ,ingredients , servings } = container
+
+    let { addToCart} = useContext(CartContext)
 
     return (
         // ! when this div gets clicked then I want it to push the new page on it
@@ -21,7 +25,8 @@ export default function SpecialContainerBox({ container }){
 
             {/* addToCart({ id , name , amount , price , customOrder}) */}
             {/* when it gets clicked pass the given categories to a different page */}
-            <button onClick={ ()=> addToCart({id , name : nameEn , amount : 1 ,price , customOrder : "" })}> + Quick Add</button>
+            <button onClick={ ()=> addToCart({id , name : nameEn , amount : 1 ,price : priceETB , customOrder : {} })}> + Quick Add</button>
+            {/* but when the whole div is clicked we gotta push some items on top */}
 
         </div>
     )

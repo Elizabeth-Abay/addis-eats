@@ -1,3 +1,4 @@
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import SpecialPage from './app/special/page/SpecialPage';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -8,17 +9,20 @@ export default function App(){
     // there will be a header and footer in all the components
     return (
         <div className='App'>
-            <Header></Header>
             <CartProvider>
                 <ReservationProvider>
+                    <Header></Header>
                     <Router>
-                        {/* this are the things that will change */}
-                        {/* in the real part the register will be the one there */}
-                        <Route path='/' element={<SpecialPage />} />
+                        <Routes>
+                            {/* this are the things that will change */}
+                            {/* in the real part the register will be the one there */}
+                            <Route path='/' element={<SpecialPage />} />
+                        </Routes>
+                        
                     </Router>
+                    <Footer></Footer>
                 </ReservationProvider>
             </CartProvider>
-            <Footer></Footer>
         </div>
 
     )

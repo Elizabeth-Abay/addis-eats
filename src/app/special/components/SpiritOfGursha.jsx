@@ -1,7 +1,12 @@
-import { FaHandHoldingHeart, HiOutlineHeart } from "react-icons/fa6";
+import { CartContext } from "@/providers/CartProvider";
+import { useContext } from "react";
+import { FaHandHoldingHeart } from "react-icons/fa6";
+import { HiOutlineHeart } from "react-icons/hi2";
 import { PRICE_OF_INJERA } from "../../../constants/variables";
 
+
 export default function SpiritOfGursha(){
+    let { addToCart} = useContext(CartContext)
     return (
         <div className="spirit-of-gursha">
             <div style={{

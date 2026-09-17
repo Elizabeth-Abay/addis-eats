@@ -9,7 +9,7 @@ import { useState } from "react";
 // input lay - + and - button will update the useRef value
 // when the reserve button is clicked i will determine the onClick there
 export default function SeatQuantifier({ numberOfSeats , min = 1 , max = 10 }){
-    let [ count , setCount ] = useState(numberOfSeats.current)
+    let [ count , setCount ] = useState(numberOfSeats.current )
     const increment = () => {
         if (numberOfSeats.current < max)  {
             numberOfSeats.current += 1
@@ -40,6 +40,9 @@ export default function SeatQuantifier({ numberOfSeats , min = 1 , max = 10 }){
             <input
                 type="number"
                 value={count}
+                // if i set a value then there should be onChange to allow the user to change the value
+                readOnly
+                // but I want the buttons to be the one changing the value
                 min={min}
                 max={max}
                 style={{ width: '48px', height: '36px', textAlign: 'center', border: 'none', outline: 'none' }}

@@ -1,36 +1,46 @@
 import { useEffect, useReducer, useState } from "react";
-import { FaRegCircleStar } from "react-icons/fa6";
+import { FaRegStar } from "react-icons/fa6";
 import CategoryFilter from "./CategoryFilter";
 import SpecialContainerBox from "./SpecialContainerBox";
 
-// the state would be the result of using useEffect
-let [ specials , setSpecials ] = useState([])
-
-
-// now i have the whole specials loaded once
-useEffect(
-    async () =>{
-        try{
-            let res = await fetch('https://addis-eats-backend.onrender.com/menu/specials')
-
-            if (!res.ok) throw Error('Problem while fetching')
-            
-            let result = await res.json();
-
-            setSpecials(result.data)
-
-        } catch (err){
-            console.log(`Error while calling useEffect in  CategoryResultContainer ${err.message}`)
-        }
-    } , []
-)
-
-
-const [displayedSpecials , setDisplayedSpecials] = useState(specials);
+// ! sthg i learnt hooks are always supposed to be called inside components
 
 
 
-const filterCategory = (state ,  action) => {
+
+export default function CategoryResultContainer(){
+    // the state would be the result of using useEffect
+    let [ specials , setSpecials ] = useState([])
+
+
+    // now i have the whole specials loaded once
+    useEffect(
+        // the callback passed to useEffect must return either a cleanup function or undefined
+        () =>{
+            const getSpecials = async () => {
+                try{
+                    let res = await fetch('https://addis-eats-backend.onrender.com/menu/specials')
+
+                    if (!res.ok) throw Error('Problem while fetching')
+                    
+                    let result = await res.json();
+
+                    setSpecials(result.data)
+
+                } catch (err){
+                    console.log(`Error while calling useEffect in  CategoryResultContainer ${err.message}`)
+                }
+            }
+
+            getSpecials()
+
+        } , []
+    )
+
+
+    const [displayedSpecials , setDisplayedSpecials] = useState(specials);
+
+    const filterCategory = (state ,  action) => {
     // the state here will be the specials box
     // action.type = will be the type passed when u first create the item
     switch (action.type.toLowerCase()){
@@ -59,11 +69,13 @@ const filterCategory = (state ,  action) => {
             setDisplayedSpecials(state)
     }
 
-}
+    }
 
-
-export default function CategoryResultContainer(){
     const [ state , dispatch ] = useReducer( filterCategory , specials);
+
+    // useReducer meaning
+    
+
 
     return (
         <div>
@@ -80,7 +92,7 @@ export default function CategoryResultContainer(){
                 </div>
 
                 <div className="todays-specials" style={{ color: "#8B5A2B", display: "inline-flex" }}>
-                    <FaRegCircleStar size={24} />
+                    <FaRegStar size={24} />
                     <h1>Today's Kitchen Highlight</h1>
                     <h6>Simmered Fresh</h6>
 

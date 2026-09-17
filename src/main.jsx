@@ -4,10 +4,8 @@ import App from "./App";
 
 let rootElement = document.getElementById('root');
 
-createRoot(
-    rootElement.render(
+createRoot(rootElement).render(
         <StrictMode>
             <App></App>
         </StrictMode>
     )
-)
