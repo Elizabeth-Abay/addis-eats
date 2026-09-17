@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer } from "react";
 import { FaRegStar } from "react-icons/fa6";
 import CategoryFilter from "./CategoryFilter";
 import SpecialContainerBox from "./SpecialContainerBox";
@@ -16,7 +16,76 @@ import SpecialContainerBox from "./SpecialContainerBox";
 export default function CategoryResultContainer(){
     // useReducer is used for having one state instead of 2 separate things
     // the state would be the result of using useEffect
-    let [ specials , setSpecials ] = useState([])
+    
+
+
+        // state and action 
+    // state here is the thing that u passed
+    // in ts - define the values u want in there { count : number , error : string }
+    // and action will be used to create things - {type : 'increment' | 'decrement'}
+    const filterCategory = (state ,  action) => {
+        console.log('state in filter categoryy')
+        console.log(state)
+    // the state here will be the specials box
+    // action.type = will be the type passed when u first create the item
+    // it will return the state with its properties updated
+    const { type} = action;
+    switch (type.toLowerCase()){
+        case 'set_all':
+            // this will set the all
+            return {
+                all : action.data,
+                filtered : action.data
+            }
+
+        case 'traditional stews & wat':
+            return { 
+                ...state , filtered : state.all.filter(
+                (item) => item.category.toLowerCase().trim() === 'traditional stews & wat'
+            )}
+        case 'tibs & grills':
+            return { 
+                ...state , filtered : state.all.filter(
+                (item) => item.category.toLowerCase().trim() === 'tibs & grills'
+            )}
+        case 'raw & cured delicacies / kitfo':
+            return { 
+                ...state , filtered : state.all.filter(
+                (item) => item.category.toLowerCase().trim() === 'raw & cured delicacies / kitfo'
+            )}
+        case 'fasting & vegan / tsom':
+            return { 
+                ...state , filtered : state.all.filter(
+                (item) => item.category.toLowerCase().trim() === 'fasting & vegan / tsom'
+            )}
+            
+        case 'beverages & tej':
+            return { 
+                ...state , filtered : state.all.filter(
+                (item) => item.category.toLowerCase().trim() === 'beverages & tej'
+            )}
+        case 'get_all':
+            return {
+                ...state , filtered : state.all
+            }
+        default:
+            return state
+    }
+
+
+    }
+
+    // state object and a dispatch function used to update the state
+    // args are - reducer function  - action and state will be taken in and based on that action it will do somethings to the state which will override the state
+    // so no in place changing
+    // initial value - required
+    const [ state , dispatch ] = useReducer( filterCategory , {
+        all : [],
+        filtered : []
+        // so the action will change the state of filtered
+        // filtered will be the one that is visible
+    });
+    // so adding sthg to the cart means the total price will increase
 
 
     // now i have the whole specials loaded once
@@ -31,12 +100,10 @@ export default function CategoryResultContainer(){
                     
                     let result = await res.json();
 
-                    setSpecials(result.data)
+                    // this will fetch the things first and then emit the data with set_all
+                    // which the dispatch will listen to and set the state correctly
+                    dispatch({type : 'set_all' , data : result.data})
 
-                    console.log('result.data')
-                    console.log(result.data)
-                    console.log('setting specials')
-                    console.log(specials)
 
                 } catch (err){
                     console.log(`Error while calling useEffect in  CategoryResultContainer ${err.message}`)
@@ -51,61 +118,8 @@ export default function CategoryResultContainer(){
     
 
 
-    const [displayedSpecials , setDisplayedSpecials] = useState(specials);
-
-    // state and action 
-    // state here is the thing that u passed
-    // in ts - define the values u want in there { count : number , error : string }
-    // and action will be used to create things - {type : 'increment' | 'decrement'}
-    const filterCategory = (state ,  action) => {
-        console.log('state in filter categoryy')
-        console.log(state)
-    // the state here will be the specials box
-    // action.type = will be the type passed when u first create the item
-    // it will return the state with its properties updated
-    const { type} = action;
-    switch (type.toLowerCase()){
-        case 'traditional stews & wat':
-            setDisplayedSpecials(state.filter(
-                (item) => item.category.toLowerCase().trim() === 'traditional stews & wat'
-            ))
-            break;
-        case 'tibs & grills':
-            setDisplayedSpecials(state.filter(
-                (item) => item.category.toLowerCase().trim() === 'tibs & grills'
-            ))
-            break;
-        case 'raw & cured delicacies / kitfo':
-            setDisplayedSpecials(state.filter(
-                (item) => item.category.toLowerCase().trim() === 'raw & cured delicacies / kitfo'
-            ))
-            break;
-        case 'fasting & vegan / tsom':
-            setDisplayedSpecials(state.filter(
-                (item) => item.category.toLowerCase().trim() === 'fasting & vegan / tsom'
-            ))
-            break;
-            
-        case 'beverages & tej':
-            setDisplayedSpecials(state.filter(
-                (item) => item.category.toLowerCase().trim() === 'beverages & tej'
-            ))
-            break;
-        default:
-            setDisplayedSpecials(state)
-
-        return state
-    }
 
 
-    }
-
-    // state object and a dispatch function used to update the state
-    // args are - reducer function  - action and state will be taken in and based on that action it will do somethings to the state which will override the state
-    // so no in place changing
-    // initial value - required
-    const [ state , dispatch ] = useReducer( filterCategory , specials);
-    // so adding sthg to the cart means the total price will increase
 
     // useReducer meaning
     // just like useState it is used to manage and update states
@@ -117,12 +131,13 @@ export default function CategoryResultContainer(){
 
 
     return (
-        <div>
+        <div className="category-container">
                 <h1>Curated Categories</h1>
                 <h2>8 Specials Live</h2>
 
                 {/* what can I do with the displayed specials */}
                 <div className="selection-buttons">
+                    <CategoryFilter type='All' onClick={ () => dispatch({type : 'get_all'})}></CategoryFilter>
                     <CategoryFilter type='Traditional Stews & Wat' onClick ={ () => dispatch({type: 'Traditional Stews & Wat'})}></CategoryFilter>
                     <CategoryFilter type='Tibs & Grills' onClick ={ () => dispatch({type: 'Tibs & Grills'})}  ></CategoryFilter>
                     <CategoryFilter type='Raw & Cured Delicacies / Kitfo' onClick ={ () => dispatch({type: 'Raw & Cured Delicacies / Kitfo'})} ></CategoryFilter>
@@ -139,8 +154,8 @@ export default function CategoryResultContainer(){
                     {/* whenever the category gets clicked then it will update the displayed things which intern wld update. */}
                     {
                         // for each returns undefined use map
-                        displayedSpecials.map(
-                            item => <SpecialContainerBox container={item}></SpecialContainerBox>
+                        state.filtered.map(
+                            item => <SpecialContainerBox key={item.id}container={item}></SpecialContainerBox>
                         )
                     }
                 </div>

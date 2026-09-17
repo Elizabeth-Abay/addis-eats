@@ -1,29 +1,44 @@
+import { useState } from "react";
 import { HiOutlineFire, HiOutlineUser } from "react-icons/hi2";
 import { LuUtensilsCrossed } from "react-icons/lu";
 import CartButton from "./CartButton";
 
 export default function Footer(){
+    const [activeTab, setActiveTab] = useState('specials');
+
     return (
-        <div className="footer">
-            <div className="footer-components">
-                <HiOutlineFire></HiOutlineFire>
+        <div className="footer-nav">
+            <button 
+                className={`nav-link ${activeTab === 'specials' ? 'active' : ''}`}
+                onClick={() => setActiveTab('specials')}
+            >
+                <HiOutlineFire className="nav-icon"></HiOutlineFire>
                 <span>Specials</span>
-            </div>
+            </button>
             
-            <div className="footer-components">
-                <LuUtensilsCrossed></LuUtensilsCrossed>
+            <button 
+                className={`nav-link ${activeTab === 'menu' ? 'active' : ''}`}
+                onClick={() => setActiveTab('menu')}
+            >
+                <LuUtensilsCrossed className="nav-icon"></LuUtensilsCrossed>
                 <span>Menu</span>
-            </div>
+            </button>
 
-            <div className="footer-components">
-                <CartButton></CartButton>
+            <button 
+                className={`nav-link ${activeTab === 'cart' ? 'active' : ''}`}
+                onClick={() => setActiveTab('cart')}
+            >
+                <CartButton className="nav-icon"></CartButton>
                 <span>Cart</span>
-            </div>
+            </button>
 
-            <div className="footer-components">
-                <HiOutlineUser></HiOutlineUser>
+            <button
+                className={`nav-link ${activeTab === 'account' ? 'active' : ''}`}
+                onClick={() => setActiveTab('account')}
+            >
+                <HiOutlineUser className="nav-icon"></HiOutlineUser>
                 <span>Account</span>
-            </div>
+            </button>
 
         </div>
     )

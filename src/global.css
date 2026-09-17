@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* ==========================================================================
+   GLOBAL RESETS & CSS VARS
+   ========================================================================== */
+:root {
+  --bg-cream: #FAF7F2;
+  --primary-maroon: #7A1C08;
+  --primary-maroon-dark: #5C1405;
+  --ritual-green: #1C3F30;
+  --amber-gold: #FFC043;
+  --soft-peach: #FAF0E8;
+  --text-main: #1F1A1C;
+  --text-muted: #786F68;
+  --card-bg: #FFFFFF;
+  --border-light: #EFE8E1;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-cream);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  padding-bottom: 80px; /* Prevents fixed bottom nav from hiding content */
+}
+
+/* ==========================================================================
+   1. BOTTOM NAVIGATION BAR (FIXED FLEXBOX HORIZONTAL LAYOUT)
+   ========================================================================== */
+.footer-nav , footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 64px;
+  background-color: #ffffff;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-around !important;
+  align-items: center !important;
+  border-top: 1px solid var(--border-light);
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+  z-index: 100;
+  padding: 0 12px;
+}
+
+.nav-link, .footer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  flex: 1;
+}
+
+/* Active Nav Item State */
+.nav-link.active, .footer-item.active {
+  color: var(--primary-maroon) !important;
+  font-weight: 800 !important;
+}
+
+.nav-link svg, .footer-item svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* ==========================================================================
+   2. DAILY RITUAL (4 PM SHARP FIX & CEREMONY RESERVE BUTTON)
+   ========================================================================== */
+.daily-ritual {
+  background: linear-gradient(180deg, #1C3F30 0%, #122B20 100%);
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+/* Removes standard button/input borders surrounding "4:00 PM Sharp" */
+.ritual-time-badge, 
+.daily-ritual button.time-tag, 
+.daily-ritual span.time-tag {
+  all: unset;
+  font-weight: 800 !important;
+  font-size: 0.85rem !important;
+  color: #A3E6CD !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Reserve Ceremony Spot Button Style */
+.reserve-ceremony-btn, .reserve-btn {
+  width: 100%;
+  background-color: #8C5200;
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  padding: 12px 18px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.reserve-ceremony-btn:hover, .reserve-btn:hover {
+  background-color: #704100;
+}
+
+.reserve-ceremony-btn:active, .reserve-btn:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   3. CATEGORY FILTER (HORIZONTAL FULL-WIDTH SCROLL)
+   ========================================================================== */
+.category-result-container, .category-filter-container {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  width: 100% !important;
+  gap: 8px !important;
+  padding: 8px 0 !important;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Hide scrollbar for clean UI */
+}
+
+.category-result-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Category Filter Pill Style */
+.category-filter-btn, .category-pill {
+  border: none;
+  background-color: var(--soft-peach);
+  color: var(--primary-maroon);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.category-filter-btn.active, .category-pill.active {
+  background-color: var(--primary-maroon);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   4. FOOD CARDS CONTAINER (VERTICAL STACKED SCROLLING)
+   ========================================================================== */
+.special-selection-container, .food-cards-list {
+  display: flex !important;
+  flex-direction: column !important; /* Switch from horizontal to vertical */
+  gap: 16px !important;
+  width: 100% !important;
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+}
+
+.special-container-box, .food-card {
+  background-color: var(--card-bg);
+  border-radius: 18px;
+  padding: 14px;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  width: 100%;
+}
+
+/* ==========================================================================
+   5. QUICK ADD BUTTON & BADGES / PILLS
+   ========================================================================== */
+.quick-add-btn {
+  background-color: var(--primary-maroon);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 8px 14px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(122, 28, 8, 0.2);
+  transition: all 0.15s ease-in-out;
+  white-space: nowrap;
+}
+
+.quick-add-btn:hover {
+  background-color: var(--primary-maroon-dark);
+}
+
+.quick-add-btn:active {
+  transform: scale(0.95);
+}
+
+/* Sub-pills inside Food Cards / Image 3 & 4 Tags */
+.food-badge, .tag-pill, .special-container-box button, .special-container-box span.badge {
+  all: unset;
+  display: inline-block;
+  background-color: var(--soft-peach) !important;
+  color: var(--primary-maroon) !important;
+  font-size: 0.68rem !important;
+  font-weight: 700 !important;
+  padding: 4px 10px !important;
+  border-radius: 8px !important;
+  border: none !important;
+  margin-right: 6px;
+  margin-bottom: 4px;
+}

@@ -2,16 +2,7 @@ import { LuUtensils } from "react-icons/lu";
 
 export default function SpecialSelectionCard() {
     return (
-        <div
-        style={{
-            background: "linear-gradient(145deg, #6c1200 0%, #460900 100%)",
-            borderRadius: "20px",
-            padding: "24px 28px",
-            color: "#ffffff",
-            maxWidth: "480px",
-            boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
-            fontFamily: "system-ui, -apple-system, sans-serif",
-        }}
+        <div className="special-selection-card"
         >
         {/* Top Header Row */}
         <div

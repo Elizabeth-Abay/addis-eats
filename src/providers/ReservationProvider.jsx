@@ -13,6 +13,9 @@ export const ReservationContext = createContext('null');
 
 export default function ReservationProvider({children}){
     let [ reservation , setReservation ] = useState([]);
+    // reservation is working
+    // console.log('reservation added');
+    // console.log(reservation)
 
 
     // price cld be set up and be constant instead of sthg passed from outside
@@ -23,17 +26,17 @@ export default function ReservationProvider({children}){
             // it is an array of objects
             // { type , numOfSeats , pricePerSeat }
             let added = false;
-            for (item of previous){
-                if (item.type === type) {
-                    item.numOfSeats += numOfSeats
-                    added = true
+            let finalArray = previous.map(
+                item => {
+                    if (item.type === type) {
+                        added = true;
+                        item.numOfSeats += numOfSeats
+                    }
+                    return item
                 }
-            }
-            
-            // if it is not found in there
-            if (!added) setReservation( (previous) => {
-                [ ...previous , { type , numOfSeats , pricePerSeat } ]
-            })
+            )
+        
+            return (added) ? finalArray : [ ...previous , { type , numOfSeats , pricePerSeat } ]
             
         })
     }
@@ -47,12 +50,9 @@ export default function ReservationProvider({children}){
         setReservation( (previous) => {
             // it is an array of objects
             // { type , numOfSeats , pricePerSeat }
-            let final = previous.filter(
+            return previous.filter(
                 item => item.type !== type
-            );
-
-            return final
-            
+            );        
         })
     }
 

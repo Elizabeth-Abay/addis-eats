@@ -8,7 +8,7 @@ import { PRICE_OF_INJERA } from "../../../constants/variables";
 export default function SpiritOfGursha(){
     let { addToCart} = useContext(CartContext)
     return (
-        <div className="spirit-of-gursha">
+        <div className="gursha-card">
             <div style={{
                 backgroundColor: '#fde68a',
                 padding: '12px',

@@ -7,7 +7,7 @@ import SeatQuantifier from "./SeatQuantifier"
 export default function ReserveTable(){
     let numberOfSeats = useRef(1)
     return (
-        <div>
+        <div className="reserve-table-card">
             <div className="image-container-feature">
                 {/*  */}
                 <img src="https://share.google/5cWLhxE6Pv3qW5eoq" alt="food-image"></img>

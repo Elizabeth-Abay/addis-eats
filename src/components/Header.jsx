@@ -11,7 +11,7 @@ export default function Header() {
 
     return (
         // the header will have 
-        <div>
+        <div className="header-container">
             {/* horizontal div  that has name and cart part*/}
             <h1>{RESTAURANT_NAME}</h1>
             <CartButton count={cart ? cart.length : 0}></CartButton>

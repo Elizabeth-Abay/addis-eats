@@ -4,22 +4,12 @@ import { FaCartShopping } from "react-icons/fa6";
 // the cart will have a count passed to it
 export default function CartButton({ count = 0 }) {
     return (
-        <button
-        style={{
-            position: "relative",
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "8px",
-            background: "transparent",
-            border: "none",
-            cursor: "pointer",
-        }}
+        <button className="cart-button"
         >
         <FaCartShopping size={24} />
 
         {count > 0 && (
-            <span
+            <span class="cart-badge"
             style={{
                 position: "absolute",
                 top: "0px",

@@ -3,7 +3,7 @@ export default function CategoryFilter({type ,onClick}){
     // when clicked I want it to dispatch sthg
     // then that sthg will be used for filtering
     return (
-        <button className="category-filter" onClick={onClick}>
+        <button className="category-filter-btn active" onClick={onClick}>
             {type}
         </button>
     )

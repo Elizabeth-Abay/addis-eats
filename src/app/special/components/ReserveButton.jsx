@@ -13,7 +13,7 @@ export default function ReserveButton({type , numberOfSeats}){
     let numOfSeats = numberOfSeats.current
 
     return (
-        <button onClick={
+        <button className="reserve-ceremony-btn" onClick={
             () => addReservation({type , numOfSeats})
         }>
             {/* add the information coming from the container to the  */}
