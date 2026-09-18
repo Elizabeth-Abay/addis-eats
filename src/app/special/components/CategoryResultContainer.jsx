@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from "react";
 import { FaRegStar } from "react-icons/fa6";
-import CategoryFilter from "./CategoryFilter";
+import CategoryFilter from "../../../components/CategoryFilter";
 import SpecialContainerBox from "./SpecialContainerBox";
 
 // ! sthg i learnt hooks are always supposed to be called inside components
