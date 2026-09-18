@@ -30,3 +30,161 @@
     color: #938379;
     font-size: 16px;
 }
+
+
+.category-filter-contaienr {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px 16px;
+  
+  /* Smooth touch scrolling on mobile */
+  -webkit-overflow-scrolling: touch;
+  
+  /* Hide scrollbar for Firefox and IE/Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Hide scrollbar for WebKit browsers (Chrome, Safari) */
+.category-filter-contaienr::-webkit-scrollbar {
+  display: none;
+}
+
+/* Prevent category buttons from shrinking when overflowing */
+.category-filter-contaienr > * {
+  flex-shrink: 0;
+}
+
+/* Base style (Inactive state) */
+.category-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 18px;
+  border: none;
+  background-color: #fbf1eb;
+  color: #3d322c;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Count badge for inactive state */
+.category-filter-btn .badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.06);
+  color: #3d322c;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+  min-width: 18px;
+}
+
+/* Hover effect on inactive buttons */
+.category-filter-btn:hover:not(.active) {
+  background-color: #f4e4da;
+}
+
+/* Active state (Burgundy brown) */
+.category-filter-btn.active {
+  background-color: #801b0e;
+  color: #ffffff;
+}
+
+/* Count badge for active state */
+.category-filter-btn.active .badge {
+  background-color: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+}
+
+.experience-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fcf1eb;
+  border-radius: 18px;
+  padding: 14px 16px;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.experience-card:hover {
+  background-color: #f6e8e0;
+}
+
+.card-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0; /* Ensures text truncation works properly */
+  flex: 1;
+}
+
+.icon-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: #fce2c8;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.badge-icon {
+  width: 22px;
+  height: 22px;
+  stroke: #724c16;
+}
+
+.card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #2c221e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-description {
+  margin: 0;
+  font-size: 13px;
+  color: #87776f;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-action-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-left: 4px;
+}
+
+.action-icon {
+  width: 24px;
+  height: 24px;
+  stroke: #80611e;
+}
