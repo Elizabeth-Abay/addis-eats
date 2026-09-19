@@ -188,3 +188,10 @@
   height: 24px;
   stroke: #80611e;
 }
+
+.dish-badge-category {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  left: auto; /* Clears left alignment if defined in base class */
+}

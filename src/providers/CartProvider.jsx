@@ -34,7 +34,114 @@ const safeStringify = (obj) => {
 
 
 
+// we need to calculate the total as well
+// { total : amount , orders : []}
 export default function CartProvider({children}){
+    let reducer = (action , state) => {
+        let act = action.toLowerCase().trim();
+
+        switch (act){
+            case 'add-to-cart':
+                let added = false;
+                let { id , name , amount , price , customOrder} = action.dish;
+                // the price wld need to include the custom ordered items as well
+                let totalPriceAdded = amonut * price;
+
+
+                let safeCustomOrder  = safeStringify(customOrder)
+                
+                // we will update the orders part in the cart
+                // search for the object in the cart
+                // if addded then update that in place
+                let { cart } = state;
+
+                let final = cart.map(
+                    (item) => {
+                        if (item.id === id && safeStringify(item.customOrder) === safeCustomOrder){
+                                // means add the amount only
+                                added = true
+                                return { ...item ,amount : item.amount + amount }
+                        }
+                    }
+                )
+
+                return {
+                    ...state,
+                    totalPrice : totalPrice + totalPriceAdded,
+                    cart : added ? final : [...cart , { id , name , amount , price , customOrder }]
+            }
+            case 'remove-from-cart':
+                let {id , customOrder} = action.dish;
+
+                let safeCustomOrder  = safeStringify(customOrder);
+
+                let { cart} = state;
+        
+                let priceReduced = 0;
+
+                cart.forEach(
+                    item => {
+                        if (item.id === id && safeStringify(item.customOrder) === safeCustomOrder){
+                            priceReduced = itemRemoved.amount * itemRemoved * price;
+                        }
+                    }
+                )
+
+                return {
+                    ...state,
+                    totalPrice : totalPrice - priceReduced,
+                    cart : cart.filter(
+                        // the id wld be different or the custom order wld be different
+                        item => !(item.id === id && safeStringify(item.customOrder) === safeCustomOrder)
+                    )
+            }
+
+            case 'update-cart':
+                let  { id , customOrder , amount , price} = action.dish;
+                let newPrice = amount * price;
+                let oldPrice = 0
+
+                let safeCustomOrder  =safeStringify(customOrder);
+
+                // update the total price and also the
+                // subtract the total amount and then add the new
+                let { cart } = state;
+                cart.forEach(
+                    item => {
+                        if (item.id === id && safeStringify(item.customOrder) === safeCustomOrder){
+                            oldPrice = item.amonut * item.price;
+                        }
+                    }
+                    
+
+                )
+
+                return {
+                    ...state,
+                    totalPrice : totalPrice - oldPrice + newPrice,
+                    cart : cart.map(
+                    // the id wld be different or the custom order wld be different
+                    item => {
+                        if (item.id === id && safeStringify(item.customOrder) === safeCustomOrder){
+                            return {...item , amount : amount , price : price}
+                        }
+                        
+                    }
+                )
+            }
+
+            case 'clear-cart':
+                return {
+                    ...state,
+                    totalPrice : 0,
+                    cart : []
+                }
+
+
+        }
+    }
+    // but in the cart we will have to know the total price too
+    // i wld have to update the totals too
     let [ cart , setCart ] = useState([]);
     // this will be the state of the cart
     // when creating context 
