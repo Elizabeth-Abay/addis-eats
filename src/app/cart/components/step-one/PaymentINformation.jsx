@@ -13,10 +13,13 @@ export default function PaymentInfo() {
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
         const isFound = PROMO_CODE_ARRAY?.find((item) => item === promoCode.trim());
+        PROMO_CODE_ARRAY?.filter((item) => item === promoCode.trim());
 
         if (isFound) {
             setPromoCodeMsg("Feast Promo Applied");
             setIsApplied(true);
+
+            // u need to update the total
             dispatch({
             type: "update-grand-total",
             amount: 200,

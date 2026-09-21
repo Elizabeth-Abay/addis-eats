@@ -175,6 +175,19 @@ export default function CartProvider({children}){
 
             }
 
+            case 'set-delivery-fee':{
+                let deliveryFee = action.deliveryFee
+
+
+                return {
+                            ...state ,
+                            grandTotal : state.grandTotal + deliveryFee,
+                            deliveryFee : deliveryFee
+
+                }
+
+            }
+
         }
     }
     // but in the cart we will have to know the total price too
@@ -185,9 +198,14 @@ export default function CartProvider({children}){
     // then create a component to hold the values since context is only a channel
 
     let [ state , dispatch] = useReducer(reducer , 
-        { total : 0 , cart : [
+        { 
+            total : 0 ,
+            cart : [
             // { id , name , amount , price , customOrder }
-        ]}
+            ] , 
+            grandTotal : 0,
+            deliveryFee : 0
+        }
     )
 
 

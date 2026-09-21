@@ -14,9 +14,8 @@ export default function DeliveryDestination() {
         const locationData = { subCity, houseNo, landmark };
         // based on the location update the total price
         dispatch({ 
-            type : 'update-grand-total' , amount : SUB_CITIES[subCity] , sign : 'plus' ,percentage : false
+            type : 'set-delivery-fee' , deliveryFee : SUB_CITIES[subCity]
         })
-        
     };
 
     return (
