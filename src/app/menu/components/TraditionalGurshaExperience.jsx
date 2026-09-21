@@ -1,6 +1,6 @@
 export default function TraditionalGursha(){
     return (
-        <div className="experience-card" onClick={onClick}>
+        <div className="experience-card">
         <div className="card-left">
         <div className="icon-badge">
             {/* Dish / Cloche Icon */}
@@ -22,8 +22,8 @@ export default function TraditionalGursha(){
         </div>
 
         <div className="card-text">
-            <h3 className="card-title">{title}</h3>
-            <p className="card-description">{description}</p>
+            <h3 className="card-title">Tradititonal Gursha Experience</h3>
+            <p className="card-description">Fresh roll of pure brown Teff Injera served wit</p>
         </div>
         </div>
 

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useReducer } from "react";
 
 
 export const CartContext = createContext(null);
@@ -143,79 +143,16 @@ export default function CartProvider({children}){
     }
     // but in the cart we will have to know the total price too
     // i wld have to update the totals too
-    let [ cart , setCart ] = useState([]);
     // this will be the state of the cart
     // when creating context 
     // first create context using null and 
     // then create a component to hold the values since context is only a channel
 
-    const addToCart = ({ id , name , amount , price , customOrder}) =>{
-        let safeCustomOrder  =safeStringify(customOrder)
-        // customOrder will be an object
-        // spiceLevel : 'sthg' , injeraBase : 'teff and barley' , = ayib : 0 , gomen : 0 , awaze : 0 , egg : 40
-        // tej : 350 , timatim_fitfit : 180 , buna : 70
-        setCart(
-            previous => {
-                let added = false
-                let newCart = previous.map(
-                    item => {
-                        // bc if it is a different order then it will be different
-                        // since customOrder is an object
-                        if (item.id === id && safeStringify(item.customOrder) === safeCustomOrder){
-                            // means add the amount only
-                            added = true
-                            return { ...item ,amount : item.amount + amount }
-                        }
-                        return item
-                    }
-
-                )
-
-                return added ? newCart : [ ...previous , { id , name , amount , price , customOrder} ]
-
-            }
-        )
-
-    }
-
-
-// ! in the cart item container we need delete button
-    const removeFromCart = ({ id , customOrder}) =>{
-        let safeCustomOrder  = safeStringify(customOrder);
-        // used to remove some item from the cart
-        setCart(
-            previous => {
-                return previous.filter(
-                    // the id wld be different or the custom order wld be different
-                    item => !(item.id === id && safeStringify(item.customOrder) === safeCustomOrder)
-                )
-            }
-        )
-
-
-    }
-
-    const updateCart = ({ id , customOrder , amount}) =>{
-        let safeCustomOrder  =safeStringify(customOrder);
-
-        setCart(
-            previous => {
-                return previous.map(
-                    // the id wld be different or the custom order wld be different
-                    item => {
-                        if (item.id === id && safeStringify(item.customOrder) === safeCustomOrder){
-                            return {...item , amount : amount}
-                        }
-                        
-                    }
-                )
-            }
-        )
-
-    }
-
-
-    const clearCart = () => setCart([])
+    let [ state , dispatch] = useReducer(reducer , 
+        { total : 0 , cart : [
+            // { id , name , amount , price , customOrder }
+        ]}
+    )
 
 
 
@@ -223,7 +160,7 @@ export default function CartProvider({children}){
     return (
         // this provider will
         // pass the value - to automatically notify the components to rerender when cart state changes
-        <CartContext.Provider value={ { cart , addToCart , removeFromCart , updateCart , clearCart} }>
+        <CartContext.Provider value={ { state , dispatch} }>
             {/* to consume the values useContext(context) */}
             {/* for the whole childern */}
             {children}

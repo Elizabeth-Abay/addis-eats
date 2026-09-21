@@ -5,7 +5,7 @@ import { createContext, useReducer } from "react";
 // item itself and things that can add it to the cart
 export const MenuContext = createContext('null')
 
-export default function MenuProvider({childern}){
+export default function MenuProvider({children}){
     // we use useState for this
     // all the filters will have to access this reducer
     // for the category buttons
@@ -13,6 +13,8 @@ export default function MenuProvider({childern}){
         let act = action.type.toLowerCase();
         switch (act){
             case 'add-menu':
+                console.log('Rendered thigns');
+                console.log(action.menu)
                 return {all : action.menu , rendered : action.menu}
             case 'traditional stews & wat':
                 return { 
@@ -67,7 +69,12 @@ export default function MenuProvider({childern}){
     let [ state , dispatch] = useReducer(menuReducer , {
         all : [],
         rendered : []
-    })
+    });
+
+
+    // console.log('state from menu Provider');
+
+    // console.log(state)
 
     // then pass the menu through the context
     // it will also need to have a filter components
@@ -77,9 +84,9 @@ export default function MenuProvider({childern}){
     // the category filter by catregory
     // in the category part there wld be amount there
     return (
-        <MenuContext.Provider value = {{ state , dispatch}}>
+        <MenuContext.Provider value = {{ state  , dispatch}}>
             {/* all the childern can see this and have a rerender possible */}
-            {childern}
+            {children}
         </MenuContext.Provider>
     )
 

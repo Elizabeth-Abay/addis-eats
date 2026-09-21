@@ -9,6 +9,9 @@ export default function MenuBox({ dish }) {
     let { addToCart } = useContext(CartContext);
 
     let [ count , setCount ] = useState(1);
+    
+    // the minimum number of items to be ordered
+    let min = 1;
 
 
     const increment = () => setCount(prev => prev + 1)
@@ -70,7 +73,7 @@ export default function MenuBox({ dish }) {
                 </div>
                 </div>
 
-
+                
                 {/* this is used to increase the amount of food ordered */}
                 <div style={{ display: 'inline-flex', alignItems: 'center', border: '1px solid #ccc', borderRadius: '6px', overflow: 'hidden' }}>
                     <button 
@@ -89,14 +92,12 @@ export default function MenuBox({ dish }) {
                         readOnly
                         // but I want the buttons to be the one changing the value
                         min={min}
-                        max={max}
                         style={{ width: '48px', height: '36px', textAlign: 'center', border: 'none', outline: 'none' }}
                     />
 
                     <button 
                         type="button"
                         onClick={increment}
-                        disabled={count >= max}
                         style={{ width: '36px', height: '36px', border: 'none', background: '#f3f4f6', cursor: 'pointer', fontSize: '18px' }}
                     >
                         +
