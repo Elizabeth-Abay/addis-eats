@@ -39,9 +39,10 @@ const safeStringify = (obj) => {
 export default function CartProvider({children}){
     let reducer = (action , state) => {
         let act = action.toLowerCase().trim();
+        
 
         switch (act){
-            case 'add-to-cart':
+            case 'add-to-cart':{
                 let added = false;
                 let { id , name , amount , price , customOrder} = action.dish;
                 // the price wld need to include the custom ordered items as well
@@ -69,8 +70,8 @@ export default function CartProvider({children}){
                     ...state,
                     totalPrice : totalPrice + totalPriceAdded,
                     cart : added ? final : [...cart , { id , name , amount , price , customOrder }]
-            }
-            case 'remove-from-cart':
+            }}
+            case 'remove-from-cart':{
                 let {id , customOrder} = action.dish;
 
                 let safeCustomOrder  = safeStringify(customOrder);
@@ -94,9 +95,9 @@ export default function CartProvider({children}){
                         // the id wld be different or the custom order wld be different
                         item => !(item.id === id && safeStringify(item.customOrder) === safeCustomOrder)
                     )
-            }
+            }}
 
-            case 'update-cart':
+            case 'update-cart':{
                 let  { id , customOrder , amount , price} = action.dish;
                 let newPrice = amount * price;
                 let oldPrice = 0
@@ -128,15 +129,15 @@ export default function CartProvider({children}){
                         
                     }
                 )
-            }
+            }}
 
-            case 'clear-cart':
+            case 'clear-cart':{
                 return {
                     ...state,
                     totalPrice : 0,
                     cart : []
                 }
-
+}
 
         }
     }
