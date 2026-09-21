@@ -1,9 +1,9 @@
-import CartItemContainer from "../components/CartItemContainer";
-import CheckoutButton from "../components/CheckOutButton";
-import DeliveryBanner from "../components/DeliveryBanner";
-import DiningEtiquette from "../components/DiningEtiquette";
-import GurshaPackage from "../components/GurshaPackage";
-import PaymentInfo from "../components/PaymentINformation";
+import CartItemContainer from "../components/step-one/CartItemContainer";
+import CheckoutButton from "../components/step-one/CheckOutButton";
+import DeliveryBanner from "../components/step-one/DeliveryBanner";
+import DiningEtiquette from "../components/step-one/DiningEtiquette";
+import GurshaPackage from "../components/step-one/GurshaPackage";
+import PaymentInfo from "../components/step-one/PaymentINformation";
 
 export default function StepOne(){
     return (
