@@ -1,0 +1,678 @@
+.gursha-package {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    background-color: #fffaf5; /* Warm cream background */
+    padding: 1rem 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.gursha-package h1 {
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    color: #7a1406; /* Deep reddish-brown / burgundy */
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.gursha-package h4 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #936e26; /* Warm mustard / gold tint */
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.delivery-card {
+  background-color: #fff4eb; /* Warm cream / peach background */
+  border-radius: 18px;
+  padding: 16px 18px 12px 18px;
+  max-width: 440px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.delivery-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.delivery-icon-box {
+  background-color: #fdb840; /* Warm gold/yellow */
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2b1f1d;
+}
+
+.delivery-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.delivery-text {
+  flex: 1;
+}
+
+.delivery-text h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #241a18;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.delivery-text p {
+  margin: 4px 0 0 0;
+  font-size: 0.85rem;
+  color: #6e615a;
+  line-height: 1.3;
+}
+
+.delivery-badge {
+  background-color: #2b5742; /* Forest green */
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  white-space: nowrap;
+  margin-top: 2px;
+}
+
+.delivery-progress-bar {
+  width: 100%;
+  height: 4px;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.delivery-progress-fill {
+  width: 100%;
+  height: 100%;
+  background-color: #fdb840;
+  border-radius: 9999px;
+}
+
+
+
+.cart-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+  max-width: 420px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Card Body */
+.cart-card-body {
+  display: flex;
+  gap: 14px;
+}
+
+/* Image & Badge */
+.cart-img-wrapper {
+  position: relative;
+  width: 82px;
+  height: 82px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.cart-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cart-badge {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  background-color: #7a1406; /* Dark reddish brown */
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Details Section */
+.cart-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cart-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #241a18;
+  line-height: 1.25;
+}
+
+.cart-remove-btn {
+  background: transparent;
+  border: none;
+  color: #6e615a;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0 0 4px 8px;
+  line-height: 1;
+}
+
+.cart-remove-btn:hover {
+  color: #241a18;
+}
+
+.cart-subtext {
+  margin: 8px 0 0 0;
+  font-size: 0.88rem;
+  color: #6e615a;
+  line-height: 1.3;
+}
+
+/* Footer Section */
+.cart-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.cart-price {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #7a1406; /* Dark red matching design */
+}
+
+/* Rounded Quantity Control Pill */
+.cart-qty-pill {
+  display: flex;
+  align-items: center;
+  background-color: #fff3ec; /* Soft warm light peach */
+  border-radius: 10px;
+  padding: 4px 12px;
+  gap: 16px;
+}
+
+.qty-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #241a18;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.qty-val {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #241a18;
+  min-width: 12px;
+  text-align: center;
+}
+
+.checkout-btn {
+  background-color: #6e0e03; /* Deep burgundy / dark reddish brown */
+  color: #ffffff;
+  border: none;
+  border-radius: 16px;
+  padding: 16px 20px;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  box-sizing: border-box;
+  box-shadow: 0 4px 12px rgba(110, 14, 3, 0.25);
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.checkout-btn:hover {
+  background-color: #580a02;
+}
+
+.checkout-btn:active {
+  transform: scale(0.99);
+}
+
+/* Left Section */
+.checkout-btn-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cloche-icon {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2.2px;
+}
+
+.checkout-text {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Right Section */
+.checkout-btn-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkout-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.arrow-icon {
+  width: 18px;
+  height: 18px;
+}
+
+
+.scroll-container {
+  max-height: 320px; /* Limits height to trigger scrolling */
+  overflow-y: auto;  /* Enables vertical scrollbar when content exceeds max-height */
+  overflow-x: hidden;/* Prevents horizontal overflow */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 6px; /* Space between content and scrollbar */
+  scroll-behavior: smooth;
+}
+
+/* Individual item styles */
+.scroll-item {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  color: #333333;
+  transition: background-color 0.2s ease;
+}
+
+.scroll-item:hover {
+  background-color: #f1f3f5;
+}
+
+/* Custom Scrollbar Styling */
+.scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+
+:root {
+  --etiquette-card-bg: #fef0e8; /* Pale peach */
+  --etiquette-marker-bg: #8c2e1b; /* Red-brown */
+  --etiquette-marker-radius: 4px;
+  --etiquette-card-radius: 12px;
+  --etiquette-note-radius: 8px;
+  --etiquette-main-text-color: #382d2c; /* Dark brown */
+  --etiquette-desc-text-color: #8f8582; /* Grey */
+  --etiquette-note-text-color: #382d2c;
+  --etiquette-divider-color: #e0dad7; /* Subtle separator */
+  /* Clean sans-serif font stack */
+  --etiquette-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.dining-etiquette-card {
+  background-color: var(--etiquette-card-bg);
+  border-radius: var(--etiquette-card-radius);
+  padding: 24px;
+  font-family: var(--etiquette-font-family);
+  max-width: 480px; /* Limit width for clean display */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03); /* Subtle depth */
+  margin: 20px auto; /* Centered with top/bottom margin */
+}
+
+.etiquette-main-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.leaf-icon {
+  flex-shrink: 0;
+}
+
+.etiquette-main-header h1 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--etiquette-main-text-color);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.etiquette-features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.feature-marker-container {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 4px; /* Align with bold title text top */
+}
+
+.feature-marker {
+  background-color: var(--etiquette-marker-bg);
+  width: 20px;
+  height: 20px;
+  border-radius: var(--etiquette-marker-radius);
+}
+
+.feature-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.feature-content h2 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--etiquette-main-text-color);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.feature-content p {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--etiquette-desc-text-color);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.etiquette-divider {
+  border: 0;
+  border-top: 1px solid var(--etiquette-divider-color);
+  margin: 24px 0;
+}
+
+.etiquette-kitchen-note {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.note-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pencil-icon {
+  flex-shrink: 0;
+}
+
+.note-header h2 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--etiquette-main-text-color);
+  margin: 0;
+}
+
+.note-text-box {
+  background-color: #ffffff;
+  border-radius: var(--etiquette-note-radius);
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02); /* Very subtle depth on white on pale peach */
+}
+
+.note-text-box p {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--etiquette-note-text-color);
+  margin: 0;
+  line-height: 1.4;
+}
+
+
+.payment-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 24px;
+  max-width: 420px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Header */
+.payment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.payment-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #241a18;
+}
+
+.dish-count {
+  color: #a3721d; /* Warm gold/brown */
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* Breakdown List */
+.payment-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.payment-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.row-label {
+  font-size: 0.95rem;
+  color: #6e615a;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.icon-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #2b5742;
+  color: #2b5742;
+  font-size: 0.65rem;
+  font-weight: bold;
+}
+
+.icon-flame {
+  font-size: 0.85rem;
+}
+
+.row-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #241a18;
+}
+
+.free-text {
+  color: #2b5742; /* Forest green */
+  font-weight: 700;
+}
+
+/* Promo Applied Box */
+.promo-applied-box {
+  background-color: #fdeee6; /* Light peach */
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.promo-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.promo-tag-icon {
+  font-size: 1.1rem;
+}
+
+.promo-code-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #7a1406;
+}
+
+.promo-subtext {
+  font-size: 0.78rem;
+  color: #8c6e63;
+}
+
+.promo-discount {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #7a1406;
+}
+
+/* Promo Input State */
+.promo-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.promo-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #e2d7d0;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  outline: none;
+  box-sizing: border-box;
+  background-color: #faf7f5;
+}
+
+.promo-input:focus {
+  border-color: #7a1406;
+}
+
+.promo-error-msg {
+  margin: 2px 0 0 4px;
+  font-size: 0.8rem;
+  color: #d32f2f;
+}
+
+/* Grand Total Box */
+.grand-total-box {
+  background-color: #fff6f0; /* Soft warm background */
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.total-left h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #241a18;
+}
+
+.total-left p {
+  margin: 4px 0 0 0;
+  font-size: 0.78rem;
+  color: #8c7e77;
+}
+
+.total-right {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #7a1406; /* Deep burgundy red */
+}

@@ -7,6 +7,8 @@ import CartProvider from './providers/CartProvider';
 import MenuProvider from './providers/MenuProvider';
 import ReservationProvider from './providers/ReservationProvider';
 
+// ! fill in the checkout page here
+
 export default function App(){
     // there will be a header and footer in all the components
     return (
@@ -20,7 +22,9 @@ export default function App(){
                                 {/* this are the things that will change */}
                                 {/* in the real part the register will be the one there */}
                                 <Route path='/' element={<SpecialPage />} />
-                                <Route path='/menu' element={<MenuPage/>} />
+                                <Route path='/menu' element={<MenuPage />} />
+
+                                <Route path='/checkout-page' element={} />
                             </Routes>
                             
                             <Footer></Footer>

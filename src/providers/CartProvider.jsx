@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useState } from "react";
 
 
 export const CartContext = createContext(null);
@@ -39,6 +39,8 @@ const safeStringify = (obj) => {
 export default function CartProvider({children}){
     let reducer = (action , state) => {
         let act = action.toLowerCase().trim();
+
+        let [ globalPrice , setGlobalPrice ] = useState(state.totalPrice);
         
 
         switch (act){
@@ -66,10 +68,14 @@ export default function CartProvider({children}){
                     }
                 )
 
+                let newTotalPrice = state.totalPrice + totalPriceAdded
+
                 return {
                     ...state,
-                    totalPrice : totalPrice + totalPriceAdded,
-                    cart : added ? final : [...cart , { id , name , amount , price , customOrder }]
+                    totalPrice : newTotalPrice,
+                    cart : added ? final : [...cart , { id , name , amount , price , customOrder }],
+                    grandTotal : newTotalPrice
+
             }}
             case 'remove-from-cart':{
                 let {id , customOrder} = action.dish;
@@ -88,9 +94,11 @@ export default function CartProvider({children}){
                     }
                 )
 
+                let newTotalPrice = state.totalPrice - priceReduced
                 return {
                     ...state,
-                    totalPrice : totalPrice - priceReduced,
+                    totalPrice : newTotalPrice,
+                    grandTotal : newTotalPrice,
                     cart : cart.filter(
                         // the id wld be different or the custom order wld be different
                         item => !(item.id === id && safeStringify(item.customOrder) === safeCustomOrder)
@@ -117,9 +125,12 @@ export default function CartProvider({children}){
 
                 )
 
+                let newFinalPrice = state.totalPrice - oldPrice + newPrice
+
                 return {
                     ...state,
-                    totalPrice : totalPrice - oldPrice + newPrice,
+                    totalPrice : newFinalPrice,
+                    grandTotal : newFinalPrice,
                     cart : cart.map(
                     // the id wld be different or the custom order wld be different
                     item => {
@@ -135,9 +146,34 @@ export default function CartProvider({children}){
                 return {
                     ...state,
                     totalPrice : 0,
+                    grandTotal : 0,
                     cart : []
                 }
-}
+            }
+
+            // when changing the cart states - grandTotal is same as total
+            // delivery and total will change that
+            case 'update-grand-total':{
+                let amount = Number(action.amount);
+                let sign = action.sign
+                let percentage = action.percentage || false; // if it is percentage then set this true
+
+                switch (sign){
+                    case 'minus':
+                        return {
+                            ...state ,
+                            grandTotal : percentage ? state.grandTotal - state.grandTotal * amount :  state.grandTotal - amount
+                        }
+                    case 'plus':
+                        return {
+                            ...state ,
+                            grandTotal : percentage ? state.grandTotal + state.grandTotal * amount :  state.grandTotal + amount
+                        }
+                }
+
+                
+
+            }
 
         }
     }
