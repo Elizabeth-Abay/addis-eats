@@ -1,45 +1,43 @@
-import { useState } from "react";
 import { HiOutlineFire, HiOutlineUser } from "react-icons/hi2";
 import { LuUtensilsCrossed } from "react-icons/lu";
+import { NavLink } from "react-router-dom";
 import CartButton from "./CartButton";
 
-export default function Footer(){
-    const [activeTab, setActiveTab] = useState('specials');
+export default function Footer() {
+  return (
+    <div className="footer-nav">
+      <NavLink 
+        to="/" 
+        className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+        end
+      >
+        <HiOutlineFire className="nav-icon" />
+        <span>Specials</span>
+      </NavLink>
 
-    return (
-        <div className="footer-nav">
-            <button 
-                className={`nav-link ${activeTab === 'specials' ? 'active' : ''}`}
-                onClick={() => setActiveTab('specials')}
-            >
-                <HiOutlineFire className="nav-icon"></HiOutlineFire>
-                <span>Specials</span>
-            </button>
-            
-            <button 
-                className={`nav-link ${activeTab === 'menu' ? 'active' : ''}`}
-                onClick={() => setActiveTab('menu')}
-            >
-                <LuUtensilsCrossed className="nav-icon"></LuUtensilsCrossed>
-                <span>Menu</span>
-            </button>
+      <NavLink 
+        to="/menu" 
+        className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+      >
+        <LuUtensilsCrossed className="nav-icon" />
+        <span>Menu</span>
+      </NavLink>
 
-            <button 
-                className={`nav-link ${activeTab === 'cart' ? 'active' : ''}`}
-                onClick={() => setActiveTab('cart')}
-            >
-                <CartButton className="nav-icon"></CartButton>
-                <span>Cart</span>
-            </button>
+      <NavLink 
+        to="/cart" 
+        className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+      >
+        <CartButton className="nav-icon" />
+        <span>Cart</span>
+      </NavLink>
 
-            <button
-                className={`nav-link ${activeTab === 'account' ? 'active' : ''}`}
-                onClick={() => setActiveTab('account')}
-            >
-                <HiOutlineUser className="nav-icon"></HiOutlineUser>
-                <span>Account</span>
-            </button>
-
-        </div>
-    )
+      <NavLink 
+        to="/my-account" 
+        className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+      >
+        <HiOutlineUser className="nav-icon" />
+        <span>Account</span>
+      </NavLink>
+    </div>
+  );
 }

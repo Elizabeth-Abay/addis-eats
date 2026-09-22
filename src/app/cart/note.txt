@@ -1,0 +1,38 @@
+In the cart it is delivery
+3 pages 
+page 1 
+    choose location : kazanchis , bole - fee = 0
+
+    shows the ordered items and + and - to change the amount of items
+    cart - items , amount , order ... - we need a way to manipulate the amount
+    take in the id and the updated amount and set it updated
+
+    we also need proceed to checkout button that contains the total price
+    this button when clicked it will send us towards step 2
+
+    input acceptor - anything u want to add
+
+    payment summary - total , extra : { plak-Box : 40 , delivery fee}
+    delivery fee - 0 , location update - we will update the delivery fee - automatically - 0
+    promo-code - will be registered = once entered then it will reduce from the added total , and set the grandTotal
+    cart - items , total , grandTotal , deliveryFee , box : according to the total price or cart.length
+
+page 2
+    Name , number 
+    Destination mnamn they will enter it kedmew
+    Confirm Order and Pay - will display the total order
+
+    Immediate vs Dinner Slot
+
+    Payment method
+
+    Items wld be displayed again
+
+
+
+page 3
+
+Done page
+
+
+Menu details page manipulates the cart
