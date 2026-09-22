@@ -1,4 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import StepOne from './app/cart/pages/step-one';
+import ThankYouPage from './app/cart/pages/thank-you';
 import MenuPage from './app/menu/page/menu';
 import SpecialPage from './app/special/page/SpecialPage';
 import Footer from './components/Footer';
@@ -24,7 +26,11 @@ export default function App(){
                                 <Route path='/' element={<SpecialPage />} />
                                 <Route path='/menu' element={<MenuPage />} />
 
-                                <Route path='/checkout-page' element={} />
+                                <Route path='/cart' element={<StepOne/>} />
+                                <Route path='/checkout-page' element={<StepTwo/>} />
+
+                                <Route path='/thank-you' element={<ThankYouPage />}/>
+
                             </Routes>
                             
                             <Footer></Footer>

@@ -24,3 +24,49 @@ export const SUB_CITIES = {
     'Nifas Silk-Lafto' : 30,
     'Yeka' : 50
 }
+
+export const paymentMethods = [
+    // an array of payment method objects
+    // { name , logo , description , requiredElts })
+    // let { text , placeholder } = requiredElts;
+    {
+        id : 1,
+        name : "Telebirr",
+        logo : "",
+        description : "Instant app push & SMS confirmation",
+        requiredElts : {
+            text : "Telebirr registered Mobile No.",
+            placeholder : "+251 9-00-00-00-00"
+        }
+    } ,
+    {
+        id : 2,
+        name : "CBE Birr",
+        logo : "",
+        description : "Commercial Bank of Ethiopia Direct Deposit",
+        requiredElts : {
+            text : "Account that pays",
+            placeholder : "1000 -00-00-00-000"
+        }
+    } ,
+    {
+        id : 3,
+        name : "Cash/Wireless POS",
+        logo : "",
+        description : "Rider carriers portable card terminal",
+        requiredElts : {
+            text : "Enter POS number",
+            placeholder : "xyz"
+        }
+    } ,
+    {
+        id : 4,
+        name : "Amole/Awash Birr",
+        logo : "",
+        description : "Awash Bank digital payment gateway",
+        requiredElts : {
+            text : "Account that pays",
+            placeholder : "1000 -00-00-00-000"
+        }
+    } 
+]

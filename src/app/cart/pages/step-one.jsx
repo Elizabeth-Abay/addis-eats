@@ -4,6 +4,7 @@ import DeliveryBanner from "../components/step-one/DeliveryBanner";
 import DiningEtiquette from "../components/step-one/DiningEtiquette";
 import GurshaPackage from "../components/step-one/GurshaPackage";
 import PaymentInfo from "../components/step-one/PaymentINformation";
+import "../styles/styles.css";
 
 export default function StepOne(){
     return (

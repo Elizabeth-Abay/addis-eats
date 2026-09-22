@@ -155,7 +155,7 @@ export default function CartProvider({children}){
             // delivery and total will change that
             case 'update-grand-total':{
                 let amount = Number(action.amount);
-                let sign = action.sign
+                let sign = action.sign.toLowerCase().strip();
                 let percentage = action.percentage || false; // if it is percentage then set this true
 
                 switch (sign){

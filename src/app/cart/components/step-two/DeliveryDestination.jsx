@@ -1,10 +1,12 @@
 import { SUB_CITIES } from '@/constants/variables';
 import { CartContext } from '@/providers/CartProvider';
+import { OrderContext } from '@/providers/OrderProvider';
 import { useContext, useState } from 'react';
 
 
 export default function DeliveryDestination() {
-    const { dispatch } = useContext(CartContext)
+    const { dispatch } = useContext(CartContext);
+    const { dispatch : orderDispatch } = useContext(OrderContext);
     const [subCity, setSubCity] = useState('Bole');
     const [houseNo, setHouseNo] = useState('Behind Edna Mall, House No. 402');
     const [landmark, setLandmark] = useState('Opposite to Boston Day Spa, entrance');
@@ -16,6 +18,13 @@ export default function DeliveryDestination() {
         dispatch({ 
             type : 'set-delivery-fee' , deliveryFee : SUB_CITIES[subCity]
         })
+
+        orderDispatch({
+            type : 'set-delivery-destination',
+            item : {  subCity ,houseNo , landmark  }
+        })
+
+        
     };
 
     return (
