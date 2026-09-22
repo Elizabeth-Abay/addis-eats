@@ -2,6 +2,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import StepOne from './app/cart/pages/step-one';
 import ThankYouPage from './app/cart/pages/thank-you';
 import MenuPage from './app/menu/page/menu';
+import OrderPage from './app/orders/pages/OrderPage';
 import SpecialPage from './app/special/page/SpecialPage';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -25,11 +26,13 @@ export default function App(){
                                 {/* in the real part the register will be the one there */}
                                 <Route path='/' element={<SpecialPage />} />
                                 <Route path='/menu' element={<MenuPage />} />
+                                <Route path='/item/:itemId' element={<OrderPage />} />
 
                                 <Route path='/cart' element={<StepOne/>} />
                                 <Route path='/checkout-page' element={<StepTwo/>} />
 
                                 <Route path='/thank-you' element={<ThankYouPage />}/>
+                                <Route path='/item-not-found' element={} />
 
                             </Routes>
                             

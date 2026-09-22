@@ -13,7 +13,7 @@ export default function MenuProvider({children}){
         let act = action.type.toLowerCase();
         switch (act){
             case 'add-menu':
-                console.log('Rendered thigns');
+                // console.log('Rendered thigns');
                 console.log(action.menu)
                 return {all : action.menu , rendered : action.menu}
             case 'traditional stews & wat':

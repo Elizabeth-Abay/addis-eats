@@ -70,3 +70,53 @@ export const paymentMethods = [
         }
     } 
 ]
+
+
+// when people want to change their side dishes they wld update this
+export const sideAccents = {
+    ayib : 0,
+    gomen : 0,
+    awaze : 0,
+    extraEgg : 40 ,//  will add price to the cart
+    tej : 350, // will add price
+    bunna : 70 , // will add price
+    timatimFitfit : 180 // will add price
+}
+
+export const SIDE_ACCENTS_CONFIG = [
+    {
+        id: "ayib",
+        title: "Fresh Ayib Curd Cheese",
+        description: "Cooling hand-churned buttermilk cottage cheese",
+    },
+    {
+        id: "gomen",
+        title: "Stewed Gomen Greens",
+        description: "Braised young highland collards with shallots",
+    },
+    {
+        id: "awaze",
+        title: "House Awaze Paste",
+        description: "Zesty berbere dip with aged honey wine infusion",
+    },
+    {
+        id: "extraEgg",
+        title: "Extra Braised Egg",
+        description: "Whole slow-cooked farm egg steeped in sauce",
+    },
+    {
+        id: "tej",
+        title: "Honey Wine (Tej)",
+        description: "Authentic Ethiopian fermented honey wine",
+    },
+    {
+        id: "bunna",
+        title: "Ethiopian Coffee (Bunna)",
+        description: "Freshly roasted traditional ceremonial coffee",
+    },
+    {
+        id: "timatimFitfit",
+        title: "Timatim Fitfit",
+        description: "Tangy tomato, jalapeno and shredded injera salad",
+    },
+];
