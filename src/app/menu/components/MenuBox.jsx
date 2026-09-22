@@ -1,8 +1,11 @@
 import { CartContext } from "@/providers/CartProvider";
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function MenuBox({ dish }) {
     let {id , slug , nameEn , nameAm , category , priceETB , spiceLevel , isFasting , isSpecial , description , ingeredients } = dish;
+
+    let navigate = useNavigate()
 
     // this function is used to add a cart 
     // we will also need to use the cartContext
@@ -26,7 +29,11 @@ export default function MenuBox({ dish }) {
     // to have a number and then have buttons to add and reduce
 
     return (
-        <div className="dish-card">
+        <div className="dish-card" onClick={
+            () =>{
+                navigate(`/item/${id}`)
+            }
+        }>
             {/* Left: Image Container with Badge */}
             <div className="dish-image-container">
                 <span className="dish-badge-category">{category}</span>

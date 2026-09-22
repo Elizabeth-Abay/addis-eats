@@ -1,16 +1,23 @@
 // I gotta use Context of cart Provider
 import { CartContext } from "@/providers/CartProvider"
 import { useContext } from "react"
+import { useNavigate } from "react-router-dom"
 
 
 export default function SpecialContainerBox({ container }){
     let { id , slug , nameEn , nameAm , category, priceETB , spiceLevel , isFasting , isSpecial , description ,ingredients , servings } = container
 
+    let navigate = useNavigate()
+
     let { addToCart} = useContext(CartContext)
 
     return (
         // ! when this div gets clicked then I want it to push the new page on it
-        <div className="food-card">
+        <div className="food-card" onClick={
+            () => {
+                navigate(`/item/${id}`)
+            }
+        }>
             {/* in the quick add we will attach the id and have the onclick here */}
             <button className="category-pill">{category}</button>
             {isFasting ? <button className="category-pill">Tsom</button> : null}
