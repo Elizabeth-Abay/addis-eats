@@ -23,7 +23,7 @@ export default function AddToCart({ total , onClick }){
             </div>
 
             <span className="btn-price">
-                ETB {typeof price === "number" ? price.toLocaleString() : price}
+                ETB {typeof total === "number" ? total.toLocaleString() : total}
             </span>
         </button>
     );

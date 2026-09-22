@@ -9,7 +9,7 @@ export default function SpecialContainerBox({ container }){
 
     let navigate = useNavigate()
 
-    let { addToCart} = useContext(CartContext)
+    let { dispatch } = useContext(CartContext)
 
     return (
         // ! when this div gets clicked then I want it to push the new page on it
@@ -32,7 +32,7 @@ export default function SpecialContainerBox({ container }){
 
             {/* addToCart({ id , name , amount , price , customOrder}) */}
             {/* when it gets clicked pass the given categories to a different page */}
-            <button className="quick-add-btn" onClick={ ()=> addToCart({id , name : nameEn , amount : 1 ,price : priceETB , customOrder : {} })}> + Quick Add</button>
+            <button className="quick-add-btn" onClick={ ()=> dispatch({ type : 'add-to-cart' , dish : {id , name : nameEn , amount : 1 ,price : priceETB , customOrder : {} }})}> + Quick Add</button>
             {/* but when the whole div is clicked we gotta push some items on top */}
 
         </div>

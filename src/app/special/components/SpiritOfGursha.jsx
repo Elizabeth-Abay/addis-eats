@@ -6,7 +6,7 @@ import { PRICE_OF_INJERA } from "../../../constants/variables";
 
 
 export default function SpiritOfGursha(){
-    let { addToCart} = useContext(CartContext)
+    let { dispatch } = useContext(CartContext)
     return (
         <div className="gursha-card">
             <div style={{
@@ -38,7 +38,7 @@ export default function SpiritOfGursha(){
                 color: '#701a06' 
                 }}>
                 <HiOutlineHeart size={20} onClick={
-                    () => addToCart({ id : 'extra-teff-wraps' , name : 'injera for gursha' , amount : 1, price : PRICE_OF_INJERA , customOrder : ''})
+                    () => dispatch({type : 'add-to-cart', dish: { id : 'extra-teff-wraps' , name : 'injera for gursha' , amount : 1, price : PRICE_OF_INJERA , customOrder : ''}})
                 } />
                 <span>Ask our team for extra teff wraps for shared Gursha</span>
             </div>

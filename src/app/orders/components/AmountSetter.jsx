@@ -11,7 +11,7 @@ export default function AmountSetter({amount , setAmount}){
             <button 
                 type="button"
                 onClick={decrement}
-                disabled={count <= min}
+                disabled={amount <= min}
                 style={{ width: '36px', height: '36px', border: 'none', background: '#f3f4f6', cursor: 'pointer', fontSize: '18px' }}
             >
                 −
@@ -19,7 +19,7 @@ export default function AmountSetter({amount , setAmount}){
 
             <input
                 type="number"
-                value={count}
+                value={amount}
                 // if i set a value then there should be onChange to allow the user to change the value
                 readOnly
                 // but I want the buttons to be the one changing the value

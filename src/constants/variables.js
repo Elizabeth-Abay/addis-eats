@@ -73,7 +73,7 @@ export const paymentMethods = [
 
 
 // when people want to change their side dishes they wld update this
-export const sideAccents = {
+export const sideAccentsPrice = {
     ayib : 0,
     gomen : 0,
     awaze : 0,

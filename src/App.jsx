@@ -1,13 +1,16 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import StepOne from './app/cart/pages/step-one';
+import StepTwo from './app/cart/pages/step-two';
 import ThankYouPage from './app/cart/pages/thank-you';
 import MenuPage from './app/menu/page/menu';
+import ItemNotFound from './app/orders/pages/NotFoundPage';
 import OrderPage from './app/orders/pages/OrderPage';
 import SpecialPage from './app/special/page/SpecialPage';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import CartProvider from './providers/CartProvider';
 import MenuProvider from './providers/MenuProvider';
+import OrderProvider from './providers/OrderProvider';
 import ReservationProvider from './providers/ReservationProvider';
 
 // ! fill in the checkout page here
@@ -16,7 +19,8 @@ export default function App(){
     // there will be a header and footer in all the components
     return (
         <div className='App'>
-            <MenuProvider>
+            <OrderProvider>
+                <MenuProvider>
                 <CartProvider>
                     <ReservationProvider>
                         <Router>
@@ -32,7 +36,7 @@ export default function App(){
                                 <Route path='/checkout-page' element={<StepTwo/>} />
 
                                 <Route path='/thank-you' element={<ThankYouPage />}/>
-                                <Route path='/item-not-found' element={} />
+                                <Route path='/item-not-found' element={<ItemNotFound />} />
 
                             </Routes>
                             
@@ -42,6 +46,8 @@ export default function App(){
                     </ReservationProvider>
                 </CartProvider>
             </MenuProvider>
+            </OrderProvider>
+            
             
         </div>
 

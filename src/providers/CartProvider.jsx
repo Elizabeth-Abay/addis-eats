@@ -1,4 +1,4 @@
-import { createContext, useReducer, useState } from "react";
+import { createContext, useReducer } from "react";
 
 
 export const CartContext = createContext(null);
@@ -37,10 +37,10 @@ const safeStringify = (obj) => {
 // we need to calculate the total as well
 // { total : amount , orders : []}
 export default function CartProvider({children}){
-    let reducer = (action , state) => {
-        let act = action.toLowerCase().trim();
+    let reducer = (state , action) => {
+        let act = action.type.toLowerCase().trim();
 
-        let [ globalPrice , setGlobalPrice ] = useState(state.totalPrice);
+        // let [ globalPrice , setGlobalPrice ] = useState(state.totalPrice);
         
 
         switch (act){
@@ -48,7 +48,7 @@ export default function CartProvider({children}){
                 let added = false;
                 let { id , name , amount , price , customOrder} = action.dish;
                 // the price wld need to include the custom ordered items as well
-                let totalPriceAdded = amonut * price;
+                let totalPriceAdded = amount * price;
 
 
                 let safeCustomOrder  = safeStringify(customOrder)

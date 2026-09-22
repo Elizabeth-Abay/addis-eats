@@ -9,7 +9,7 @@ export default function MenuBox({ dish }) {
 
     // this function is used to add a cart 
     // we will also need to use the cartContext
-    let { addToCart } = useContext(CartContext);
+    let { dispatch } = useContext(CartContext);
 
     let [ count , setCount ] = useState(1);
     
@@ -21,7 +21,7 @@ export default function MenuBox({ dish }) {
     const decrement = () => setCount(prev => prev - 1)
 
     let onAddToCart = () => {
-        addToCart({ id , name : nameEn , amount : count , price : priceETB , customOrder : {}})
+        dispatch({ type : 'add-to-cart' , dish : { id , name : nameEn , amount : count , price : priceETB , customOrder : {}}})
 
     }
 

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./SpiceLevelSelector.css";
 
 const SPICE_OPTIONS = [
     {

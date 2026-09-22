@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./InjeraBaseSelector.css";
 
 const INJERA_OPTIONS = [
     {

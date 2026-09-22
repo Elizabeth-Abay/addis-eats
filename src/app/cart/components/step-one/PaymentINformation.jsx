@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 
 export default function PaymentInfo() {
     const { state, dispatch } = useContext(CartContext);
-    const { totalPrice , grandTotal , cart } = state || {};
+    const { total , grandTotal , cart } = state ;
 
     const [promoCode, setPromoCode] = useState("");
     const [promoCodeMsg, setPromoCodeMsg] = useState("");
@@ -44,7 +44,7 @@ export default function PaymentInfo() {
         <div className="payment-breakdown">
             <div className="payment-row">
             <span className="row-label">Items Subtotal</span>
-            <span className="row-value">ETB {totalPrice.toLocaleString()}</span>
+            <span className="row-value">ETB {total.toLocaleString()}</span>
             </div>
 
             <div className="payment-row">

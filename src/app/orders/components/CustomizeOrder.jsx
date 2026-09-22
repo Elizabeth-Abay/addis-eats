@@ -80,7 +80,7 @@ export default function CustomizeOrder({item }){
         <div>
             <SpiceLevelSelector onSpiceChange={onSpiceChange} /> 
             <InjeraBaseSelector onInjeraChange={onInjeraChange} />
-            <SideAccentsSelector updateSideAccents={updateSideAccents} updateTotal={updateTotal}  sideAccents={customOrder.sideAccents} />
+            <SideAccentsSelector updateSideAccents={updateSideAccents} updateTotal={updateTotalPrice}  sideAccents={customOrder.sideAccents} />
             <AmountSetter amount={amount} setAmount={setAmount}/>
             <AddToCart onClick={onAddToCart} total={totalPrice}/>
             

@@ -2,7 +2,7 @@ import { createContext, useReducer } from "react";
 
 export const OrderContext = createContext('null');
 
-export default function OrderProvider(){
+export default function OrderProvider({children}){
     let reducer = (state , action) =>{
         let act = action.type.toLowerCase().strip();
 
@@ -63,7 +63,8 @@ export default function OrderProvider(){
     
 
     return (
-        <OrderContext.Provider>
+        <OrderContext.Provider value={{state , dispatch}}>
+            {children}
         </OrderContext.Provider>
     )
 }
