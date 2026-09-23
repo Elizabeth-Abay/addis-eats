@@ -25,14 +25,14 @@ export default function CategoryFilterContainer(){
             {/* on click add active classtype to them  */}
             {
                 categories.map(
-                    cat => {
+                    cat => (
                         <CategoryFilter 
                             key={cat.name}
                             type={cat.name}
                             isActive={activeCategory === cat.name}
                             onClick={() => handleCategoryClick(cat.name, cat.action) }
                         ></CategoryFilter>
-                    }
+                    )
                 )
             }
         </div>
