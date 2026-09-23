@@ -4,7 +4,7 @@ export const OrderContext = createContext('null');
 
 export default function OrderProvider({children}){
     let reducer = (state , action) =>{
-        let act = action.type.toLowerCase().strip();
+        let act = action.type.toLowerCase().trim();
 
         switch (act){
             case 'set-receipient-info':{

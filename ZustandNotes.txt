@@ -1,0 +1,106 @@
+Context Api and state managment
+
+normally how it works in Context
+
+Context - values -> provider will wrap the elements -> consumers run useContext(context)
+but on every change the consumers get rerendered
+
+use context properly and tools when that is not enough
+
+Context in Depth
+
+first wrap the context in hook - good for handling errors 
+like the useCart will allow u to check before using
+function useCart(){
+    const ctx = useContext(cartContext)
+    if (!ctx) throw Error()
+    return ctx
+}
+export the hook not the context - context is private 
+ctx here will hold the values
+
+
+Not have one context to handle all
+Bc when u do a reload - it will reload everything
+
+if a component uses dispatch only then it won't change upon changing the state
+
+
+context                     vs       library
+small num of shared vals            many num of shared vals
+user action new change              changes many times a second
+every consumer needs the change     each screen needs a different slice
+state read only in component        read state outside components
+one team one file                   middleware , devtools , persistance
+
+
+
+
+State library keeps ur data outside the component tree 
+Components subscribe to the part they use and re renders only when the part they listen to changes + state can be read from anywhere
+
+
+Normally we are making the tree's parent to be the Provider so The
+children will be able to use that up
+
+Store - state lives in a separate module and components subscribe to the slice they care abt
+how do u get the slice u care abt - using the selector function
+useCart(s => s.total)
+
+Store - holds all the shared variables
+selector - slice picker from the state
+action - changes the state
+subscribe - rerender me when my slice changes
+middleware - runs on every change
+devtools - shows u every change over time
+
+
+using Zustand : install
+import create function then
+let useCartStore = create(
+    (set) => {
+        items : [],
+        total : 0,
+        state updater functions
+        action.sthg - in useReduce - will be an argument passed
+        addItem : (dish) => {
+            set - is a function that takes in a function
+            it is like setState
+            set(
+                prev => { ..prev , sthg } - this will be the new state
+            )
+        }
+    }
+)
+
+
+the selector is used to subsribe that component to that state
+
+const items = useCartStore(
+    it gives u an access to the object created
+    s => s.items
+)
+
+taking the whole - useCartStore() - means u will rerender everytime sthg changes = useContext directly use mareg
+
+so once u change the store then change the dispatch ... to addItem
+
+
+Zustand is a state managment library
+global state  - a state that isnt defined in a component
+So it means u wont have to do prop drilling and u wont do wrapping the whole tree with a provider as well
+
+Store in Zustand - state + updator
+when u do create( (set) => {}) - u r creating a hook
+u can use it in components w.o wrapping them by a parent
+
+
+In useContext even the components that only use the dispatch will be re rendered , 
+but when using Zustand the updater functions , aka the dispatch components wont be rerendered4
+
+2 ways of calling the things
+One is in components = useCartStore( state => state.sthg)
+
+outside components 
+useCartStore.getState().sthg -- bc u cant directly access the state outside the component
+to update - useCartStore.setState({ sthg : new_value})

@@ -137,3 +137,29 @@ if they are member only then kazanchis and bole drop
 Jebena buna roasting
 
 slogan
+
+
+
+Things to add
+
+Cart state - shld use Zustand
+Schema validation using Zod
+Error Boundary and lazy loading
+Portals Modal
+
+
+Mia comments
+
+Fix the ui ugh
+Check if the reservation actually works
+menu search lay maybe check out that part
+UI lay fix the sideAccents
+And when add to cart is successful show them a message and move them back to the menu page
+
+Cart lay fix the price first and then display amount
+So the issue is kdm yalewn new miyayew not current yalewn the checkout
+
+
+promo code fix that - only one promo - store the promocodes in the localStorage then edit that
+
+When the users click done in orders page then show some message

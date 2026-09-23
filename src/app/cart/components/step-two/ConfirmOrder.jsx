@@ -9,18 +9,23 @@ export default function ConfirmOrderAndaPay(){
     let disabled = false;
     let isLoading = false;
 
+    let navigate = useNavigate()
+
     let onClick = () => {
         // when this button is clicked
         // 2 things happen
         // one is navigation to thank you page
         // second is clearing the cart state bc once they confirm the order and pay 
         // that is it
-        let navigate = useNavigate();
+        // let navigate = useNavigate();
+        // we should use Navigate component for navigation purpose
 
         dispatch({ type : 'update-grand-total' , amount : grandTotal , sign : 'minus' ,  percentage : false});
-        dispatch({ type : 'clear-cart'});
 
-        navigate('/thank-you')
+        console.log('the state of the cart after confirm payment');
+        console.log(state)
+        navigate('/thank-you' , { replace : true})
+        // returns from event handlers are ignored 
     }
     return (
         <button 
