@@ -52,7 +52,7 @@ const useCartStore = create(
                 // search for the object in the cart
                 // if addded then update that in place
 
-                let { cart , total } = get()
+                let { cart , total , grandTotal } = get()
 
                 let final = cart.map(
                     (item) => {
@@ -67,6 +67,7 @@ const useCartStore = create(
                 )
 
                 let newTotalPrice = Number(total) + totalPriceAdded
+                let newGrandTotal = Number(grandTotal) + totalPriceAdded
 
                 // we use set to set the step
                 set(
@@ -75,7 +76,7 @@ const useCartStore = create(
                             ...state,
                             total : Number(newTotalPrice),
                             cart : added ? final : [...cart , { id , name , amount , price , customOrder }],
-                            grandTotal : Number(newTotalPrice) 
+                            grandTotal : Number(newGrandTotal) 
                             // the difference between total and grandTotal - is grandTotal will include the delivery fee
                     }}
                 )
@@ -88,7 +89,7 @@ const useCartStore = create(
                 let safeCustomOrder  = safeStringify(customOrder);
 
                 // cart will be obtained from the parent scope
-                let { cart , total } = get()
+                let { cart , total , grandTotal } = get()
         
                 let priceReduced = 0;
 
@@ -103,13 +104,14 @@ const useCartStore = create(
                 )
 
                 let newTotalPrice = Number(total) - priceReduced;
+                let newGrandTotal = Number(grandTotal) - priceReduced;
 
                 set(
                     state => {
                         return {
                             ...state,
                             total : Number(newTotalPrice),
-                            grandTotal : Number(newTotalPrice),
+                            grandTotal : Number(newGrandTotal),
                             cart : cart.filter(
                                 // the id wld be different or the custom order wld be different
                                 item => !(item.id === id && safeStringify(item.customOrder) === safeCustomOrder)
@@ -125,7 +127,7 @@ const useCartStore = create(
                 let newPrice = Number(amount) * Number(price);
                 let oldPrice = 0
 
-                let { cart , total } = get()
+                let { cart , total , grandTotal } = get()
 
                 let safeCustomOrder  =safeStringify(customOrder);
 
@@ -153,13 +155,14 @@ const useCartStore = create(
                 let newFinalPrice = Number(total) - oldPrice + newPrice
                 console.log('Calculating the new Final price');
                 console.log(newFinalPrice)
+                let newGrandTotal = Number(grandTotal) - oldPrice + newPrice
 
                 set(
                     state => {
                         return {
                             ...state,
                             total : Number(newFinalPrice),
-                            grandTotal : Number(newFinalPrice),
+                            grandTotal : Number(newGrandTotal),
                             cart : cart.map(
                                 // the id wld be different or the custom order wld be different
                                 item => {
@@ -203,6 +206,8 @@ const useCartStore = create(
                                 }
                             }
                         )
+
+                        break;
                         
                     case 'plus':
                         set(
@@ -213,6 +218,7 @@ const useCartStore = create(
                                 }
                             }
                         )
+                        break;
                 }
 
                 

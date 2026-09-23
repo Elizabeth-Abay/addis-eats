@@ -21,8 +21,8 @@ export default function ConfirmOrderAndaPay(){
 
         updateGrandTotal({ amount : grandTotal , sign : 'minus' ,  percentage : false});
 
-        console.log('the state of the cart after confirm payment');
-        console.log(state)
+        // console.log('the state of the cart after confirm payment');
+        // console.log(state)
         navigate('/thank-you' , { replace : true})
         // returns from event handlers are ignored 
     }

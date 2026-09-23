@@ -163,3 +163,7 @@ So the issue is kdm yalewn new miyayew not current yalewn the checkout
 promo code fix that - only one promo - store the promocodes in the localStorage then edit that
 
 When the users click done in orders page then show some message
+
+
+
+useState ... are async functions , they schedule the updated value for the next render
