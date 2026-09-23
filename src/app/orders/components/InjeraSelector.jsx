@@ -6,6 +6,7 @@ const INJERA_OPTIONS = [
         title: "Standard Teff & Barley Blend",
         description: "Classic sourdough fermentation • Soft sponge",
         priceLabel: "Included",
+        price : 0,
         isIncluded: true,
         badge: null,
     },
@@ -14,17 +15,22 @@ const INJERA_OPTIONS = [
         title: "100% Pure Organic Brown Teff",
         description: "Ancient grain, deep nutty flavor & mineral rich",
         priceLabel: "+ETB 60",
+        price : 60,
         isIncluded: false,
         badge: "Gluten-Free",
     },
 ];
 
-export default function InjeraBaseSelector({ onInjeraChange }) {
+export default function InjeraBaseSelector({ onInjeraChange , updateTotal }) {
     const [selectedId, setSelectedId] = useState("standard");
 
     const handleSelect = (id) => {
         setSelectedId(id);
         onInjeraChange(id);
+        // but we gotta check if that will also cause a change in the price
+        
+        (id === 'brown-teff') ? updateTotal({amount : 60 , type : 'plus'}) : updateTotal({amount : 60 , type : 'minus'})
+
     };
 
     return (

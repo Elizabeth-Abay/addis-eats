@@ -63,7 +63,7 @@ export default function DeliveryDestination() {
                 onChange={(e) => setSubCity(e.target.value)}
                 className="custom-select"
                 >
-                {SUB_CITIES.keys().map((city) => (
+                {Array.from(Object.keys(SUB_CITIES)).map((city) => (
                     <option key={city} value={city}>
                     {city} Sub-city
                     </option>

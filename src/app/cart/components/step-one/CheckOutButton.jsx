@@ -7,9 +7,12 @@ export default function CheckoutButton() {
 
   const { state } = useContext(CartContext);
 
-  const price = state.totalPrice;
+  console.log('state loaded for checkout');
+  console.log(state)
+  const price = state.total;
 
   const formattedPrice = Number(price).toLocaleString('en-US');
+  console.log(`price is ${price} , formatted price is ${formattedPrice} `);
 
   return (
     <button className="checkout-btn" onClick={

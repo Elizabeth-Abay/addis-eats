@@ -10,7 +10,9 @@ import { useContext, useState } from "react";
 export default function CartBox({item}){
     let { dispatch } = useContext(CartContext)
 
+    // this is the thing that is obtained from the cart
     let { id , name , amount , price , customOrder } = item
+    let { spiceLevel  , injera , sideAccents } = customOrder;
 
     let min = 1
     
@@ -40,17 +42,20 @@ export default function CartBox({item}){
         dispatch({ type : 'remove-from-cart' , dish :{ id , customOrder}  })
     }
 
+    let toyKey = 1;
+
     return (
         <div className="cart-card">
             <div className="cart-card-body">
             {/* Left: Image with Spicy Badge */}
                 <div className="cart-img-wrapper">
                     <img
-                    src={image || "https://via.placeholder.com/100"}
+                    // image is undefined
+                    src={"image" || "https://via.placeholder.com/100"}
                     alt={name}
                     className="cart-img"
                     />
-                    {spicy && <span className="cart-badge">Spicy {spicy}</span>}
+                    {spiceLevel && <span className="cart-badge"> SpiceLevel {spiceLevel}</span>}
                 </div>
 
                 {/* Right Top: Title, Subtext, Delete Icon */}
@@ -67,11 +72,19 @@ export default function CartBox({item}){
                     </button>
                     </div>
 
-                    <p className="cart-subtext">{customOrder}</p>
+                    <p className="cart-subtext"> Injera - {injera}</p>
+                    <p className="cart-subtext"> Side Accents</p>
+                    {
+                        sideAccents.map(
+                            item => <p key={toyKey++} className="cart-subtext">{item}</p>
+                        )
+                    }
                 </div>
             </div>
 
+
             {/* Bottom Row: Price & Quantity Pill */}
+            {/* this button is used for changing the amount - which will update the grand total */}
             <div className="cart-card-footer">
                 <div className="cart-price">ETB {price}</div>
 

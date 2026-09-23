@@ -10,7 +10,10 @@
   box-sizing: border-box;
   width: 100%;
   border-radius: 12px;
+  height: 30%;
 }
+
+
 
 /* Header Flex Row */
 .title-header-row {

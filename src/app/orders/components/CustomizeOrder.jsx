@@ -17,12 +17,14 @@ import SpiceLevelSelector from "./SpiceSelector";
 export default function CustomizeOrder({item }){
     let {id , name ,  price} = item;
     let { dispatch } = useContext(CartContext)
+
+    // use dispatch for saying add to cart and updating the cart items
      // what do i want 
     // to store the custom order in some object and then when that changes
     // to update the price , the tick parts they will be handled by the elt itself
     let  [customOrder , setCustomOrder ] = useState({
-        spiceLevel : '', // mid, traditional , fiery awaze
-        injera : '' ,// standard , brown-teff - will also add price to the cart
+        spiceLevel : 'tradtitional', // mid, traditional , fiery awaze
+        injera : 'standard' ,// standard , brown-teff - will also add price to the cart
         sideAccents : [], // will contain the additional items
         // so input will have a name
         // when it gets clicked then it will add its price to the total
@@ -38,6 +40,8 @@ export default function CustomizeOrder({item }){
                 return { ...prev , spiceLevel : chosenLevel}
             }
         ) 
+
+        
     }
 
     let onInjeraChange = (chosenType) => {
@@ -49,6 +53,8 @@ export default function CustomizeOrder({item }){
     }
     
 
+
+    // but the total price in the cart will need to change as well
     let updateTotalPrice = ({ amount , type})=>{
         let newTotal = (type === 'plus') ? totalPrice + amount : totalPrice - amount
 
@@ -77,9 +83,9 @@ export default function CustomizeOrder({item }){
     }
 
     return (
-        <div>
+        <div className="customize-order">
             <SpiceLevelSelector onSpiceChange={onSpiceChange} /> 
-            <InjeraBaseSelector onInjeraChange={onInjeraChange} />
+            <InjeraBaseSelector onInjeraChange={onInjeraChange} updateTotal={updateTotalPrice}/>
             <SideAccentsSelector updateSideAccents={updateSideAccents} updateTotal={updateTotalPrice}  sideAccents={customOrder.sideAccents} />
             <AmountSetter amount={amount} setAmount={setAmount}/>
             <AddToCart onClick={onAddToCart} total={totalPrice}/>
