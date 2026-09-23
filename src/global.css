@@ -80,6 +80,56 @@ body {
   fill: currentColor;
 }
 
+/* Header styling */
+.header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+
+  /* Sticky positioning at top */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  /* Background color is required so scrolled content doesn't show through */
+  background-color: #ffffff; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+}
+
+/* Cart Button styling */
+.cart-button {
+  position: relative; /* CRITICAL: allows the badge to position relative to this button */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: #333333;
+}
+
+/* Styling the vertical scrollbar for the grid container */
+.specials-scroll-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.specials-scroll-area::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.specials-scroll-area::-webkit-scrollbar-thumb {
+  background: rgba(245, 158, 11, 0.4); /* Gold scroll handle */
+  border-radius: 10px;
+}
+
+.specials-scroll-area::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 158, 11, 0.8);
+}
+
 /* ==========================================================================
    2. DAILY RITUAL (4 PM SHARP FIX & CEREMONY RESERVE BUTTON)
    ========================================================================== */

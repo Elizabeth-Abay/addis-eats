@@ -10,7 +10,13 @@ export default function SpecialPage(){
     // ! add the order and add to cart buttons at top
     // we pass that to the input 
     return (
-        <div className="feature-section">
+        <div className="feature-section"
+        style={
+            {
+                display : "flex",
+                flexDirection : "column"
+            }
+        }>
             <SpecialSelectionCard></SpecialSelectionCard>
             <FeatureHead></FeatureHead>
             {/* we will need the category and filter containers */}

@@ -2,15 +2,43 @@ import { LuUtensils } from "react-icons/lu";
 
 export default function SpecialSelectionCard() {
     return (
-        <div className="special-selection-card"
+        <div
+        className="special-selection-card"
+        style={{
+            position: "relative",
+            overflow: "hidden",
+            padding: "28px",
+            borderRadius: "24px",
+            /* Rich dark mahogany & espresso gradient */
+            background: "linear-gradient(135deg, rgba(42, 20, 14, 0.95) 0%, rgba(20, 10, 6, 0.98) 100%)",
+            /* Subtle gold border and elevated shadow */
+            border: "1px solid rgba(245, 158, 11, 0.25)",
+            boxShadow: "0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.15)",
+            backdropFilter: "blur(12px)",
+            color: "#ffffff",
+            maxWidth: "480px",
+        }}
         >
+        {/* Background Radial Glow Accent */}
+        <div
+            style={{
+            position: "absolute",
+            top: "-40px",
+            right: "-40px",
+            width: "180px",
+            height: "180px",
+            background: "radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, rgba(0,0,0,0) 70%)",
+            pointerEvents: "none",
+            }}
+        />
+
         {/* Top Header Row */}
         <div
             style={{
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            marginBottom: "16px",
+            marginBottom: "18px",
             }}
         >
             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
@@ -21,14 +49,15 @@ export default function SpecialSelectionCard() {
                 backgroundColor: "#f59e0b",
                 borderRadius: "50%",
                 display: "inline-block",
+                boxShadow: "0 0 8px #f59e0b", /* Soft amber glow on the dot */
                 }}
             />
             <span
                 style={{
                 fontSize: "12px",
                 fontWeight: "700",
-                letterSpacing: "1px",
-                color: "#fef08a",
+                letterSpacing: "1.2px",
+                color: "#fde047",
                 textTransform: "uppercase",
                 }}
             >
@@ -37,15 +66,15 @@ export default function SpecialSelectionCard() {
             </div>
 
             {/* Decorative Graphic Element */}
-            <div style={{ display: "flex", gap: "3px", opacity: 0.6 }}>
+            <div style={{ display: "flex", gap: "4px", opacity: 0.4 }}>
             {[...Array(6)].map((_, i) => (
                 <div
                 key={i}
                 style={{
                     width: "3px",
                     height: "14px",
-                    backgroundColor: "#ffffff",
-                    borderRadius: "1px",
+                    backgroundColor: "#fef08a",
+                    borderRadius: "2px",
                 }}
                 />
             ))}
@@ -55,12 +84,13 @@ export default function SpecialSelectionCard() {
         {/* Main Serif Title */}
         <h2
             style={{
-            fontFamily: "'Georgia', 'Playfair Display', serif",
-            fontSize: "28px",
+            fontFamily: "'Playfair Display', 'Georgia', serif",
+            fontSize: "26px",
             fontWeight: "700",
-            lineHeight: "1.2",
-            margin: "0 0 14px 0",
+            lineHeight: "1.25",
+            margin: "0 0 12px 0",
             color: "#ffffff",
+            letterSpacing: "-0.2px",
             }}
         >
             Communal Warmth,
@@ -72,9 +102,10 @@ export default function SpecialSelectionCard() {
         <p
             style={{
             fontSize: "14px",
-            lineHeight: "1.5",
-            color: "rgba(255, 255, 255, 0.85)",
+            lineHeight: "1.6",
+            color: "rgba(255, 255, 255, 0.8)",
             margin: "0 0 24px 0",
+            fontWeight: "400",
             }}
         >
             Gather around our handwoven mesob for time-honored wots, sizzling clay
@@ -87,13 +118,16 @@ export default function SpecialSelectionCard() {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
+            gap: "12px",
+            paddingTop: "16px",
+            borderTop: "1px solid rgba(255, 255, 255, 0.08)", /* Subtle divider */
             }}
         >
             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <LuUtensils size={18} color="#f59e0b" />
             <span
                 style={{
-                fontSize: "14px",
+                fontSize: "13px",
                 fontWeight: "600",
                 color: "#fef08a",
                 }}
@@ -102,21 +136,22 @@ export default function SpecialSelectionCard() {
             </span>
             </div>
 
-            <button
+            <div
             style={{
-                backgroundColor: "rgba(255, 255, 255, 0.18)",
-                color: "#ffffff",
-                border: "none",
+                backgroundColor: "rgba(245, 158, 11, 0.15)", /* Warm tinted glass button */
+                color: "#fef08a",
+                border: "1px solid rgba(245, 158, 11, 0.3)",
                 borderRadius: "20px",
                 padding: "8px 16px",
-                fontSize: "13px",
+                fontSize: "12px",
                 fontWeight: "600",
                 cursor: "pointer",
                 backdropFilter: "blur(4px)",
+                whiteSpace: "nowrap",
             }}
             >
             Today's Batch
-            </button>
+            </div>
         </div>
         </div>
     );

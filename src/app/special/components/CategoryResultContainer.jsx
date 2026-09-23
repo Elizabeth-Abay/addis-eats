@@ -131,37 +131,118 @@ export default function CategoryResultContainer(){
 
 
     return (
-        <div className="category-container">
-                <h1>Curated Categories</h1>
-                <h2>8 Specials Live</h2>
+        <div 
+            className="category-container"
+            style={{
+                display: "flex",
+                flexDirection: "column",
+                height: "calc(100vh - 100px)", /* Fills majority of screen height */
+                width: "100%",
+                maxWidth: "1200px",
+                margin: "0 auto",
+                padding: "24px",
+                boxSizing: "border-box",
+            }}
+        >
+            
+            <div style={{ marginBottom: "20px" }}>
+            <div style={{ display: "flex", alignItems: "baseline", gap: "12px" }}>
+            <h1
+                style={{
+                margin: 0,
+                fontSize: "28px",
+                fontFamily: "'Playfair Display', serif",
+                color: "#ffffff",
+                }}
+            >
+                Curated Categories
+            </h1>
+            <span
+                style={{
+                fontSize: "13px",
+                fontWeight: "600",
+                color: "#f59e0b",
+                }}
+            >
+                {state.filtered.length} Specials Live
+            </span>
+        </div>
 
                 {/* what can I do with the displayed specials */}
-                <div className="selection-buttons">
-                    <CategoryFilter type='All' onClick={ () => dispatch({type : 'get_all'})}></CategoryFilter>
-                    <CategoryFilter type='Traditional Stews & Wat' onClick ={ () => dispatch({type: 'Traditional Stews & Wat'})}></CategoryFilter>
-                    <CategoryFilter type='Tibs & Grills' onClick ={ () => dispatch({type: 'Tibs & Grills'})}  ></CategoryFilter>
-                    <CategoryFilter type='Raw & Cured Delicacies / Kitfo' onClick ={ () => dispatch({type: 'Raw & Cured Delicacies / Kitfo'})} ></CategoryFilter>
-                    <CategoryFilter type='Fasting & Vegan / Tsom' onClick ={ () => dispatch({type: 'Fasting & Vegan / Tsom'})}></CategoryFilter>
-                    <CategoryFilter type='Beverages & Tej' onClick ={ () => dispatch({type: 'Beverages & Tej'})} ></CategoryFilter>
+                <div className="selection-buttons" style={{
+            display: "flex",
+            gap: "10px",
+            overflowX: "auto",
+            padding: "16px 0 8px 0",
+            scrollbarWidth: "none", /* Firefox hide scrollbar */
+          }}>
+                    <CategoryFilter key ='All' type='All' onClick={ () => dispatch({type : 'get_all'})}></CategoryFilter>
+                    <CategoryFilter key ='Wat' type='Traditional Stews & Wat' onClick ={ () => dispatch({type: 'Traditional Stews & Wat'})}></CategoryFilter>
+                    <CategoryFilter key ='Tibs' type='Tibs & Grills' onClick ={ () => dispatch({type: 'Tibs & Grills'})}  ></CategoryFilter>
+                    <CategoryFilter key ='Raw' type='Raw & Cured Delicacies / Kitfo' onClick ={ () => dispatch({type: 'Raw & Cured Delicacies / Kitfo'})} ></CategoryFilter>
+                    <CategoryFilter key ='Tsom' type='Fasting & Vegan / Tsom' onClick ={ () => dispatch({type: 'Fasting & Vegan / Tsom'})}></CategoryFilter>
+                    <CategoryFilter key ='Beverage' type='Beverages & Tej' onClick ={ () => dispatch({type: 'Beverages & Tej'})} ></CategoryFilter>
                 </div>
 
-                <div className="todays-specials" style={{ color: "#8B5A2B", display: "inline-flex" }}>
-                    <FaRegStar size={24} />
-                    <h1>Today's Kitchen Highlight</h1>
+                <div className="specials-scroll-area" 
+                style={{
+                    flex: 1, /* Takes up remaining height in flex container */
+                    overflowY: "auto", /* Enables vertical scrolling */
+                    paddingRight: "8px", /* Space for custom scrollbar */
+                    }}
+                >
+                    <div
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                        marginBottom: "20px",
+                        color: "#f59e0b",
+                    }}
+                    >
+                    <FaRegStar size={22} />
+                    <h2
+                        style={{
+                        margin: 0,
+                        fontSize: "20px",
+                        fontWeight: "600",
+                        color: "#ffffff",
+                        }}
+                    >
+                        Today's Kitchen Highlights
+                    </h2>
+
                     <h6>Simmered Fresh</h6>
+
+                    </div>
+
+                    <div
+                        style={{
+                            display: "grid",
+                            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+                            gap: "20px",
+                            paddingBottom: "24px",
+                        }}
+                    >
+                        {state.filtered.length > 0 ? (
+                            state.filtered.map((item) => (
+                            <SpecialContainerBox key={item.id} container={item} />
+                            ))
+                        ) : (
+                            <p style={{ color: "rgba(255,255,255,0.6)", gridColumn: "1 / -1" }}>
+                            No items available for this category.
+                            </p>
+                        )}
+                    </div>
 
                     {/* for every item in displayed Special create a special container */}
                     {/* whenever the category gets clicked then it will update the displayed things which intern wld update. */}
-                    {
-                        // for each returns undefined use map
-                        state.filtered.map(
-                            item => <SpecialContainerBox key={item.id}container={item}></SpecialContainerBox>
-                        )
-                    }
+                    
                 </div>
 
 
 
+            </div>
             </div>
     )
 }
