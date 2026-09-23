@@ -39,7 +39,7 @@ export default function PaymentMethodBox({ item, isSelected: externalIsSelected,
             <div className="payment-box-info">
             <div className="payment-logo-wrapper">
                 {typeof logo === "string" ? (
-                <img src={logo} alt={name} className="payment-logo" />
+                <img src="{logo}" alt={name} className="payment-logo" />
                 ) : (
                 logo
                 )}

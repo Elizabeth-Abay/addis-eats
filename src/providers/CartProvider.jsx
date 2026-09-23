@@ -1,4 +1,4 @@
-import { createContext, useReducer, useState } from "react";
+import { createContext, useReducer } from "react";
 
 
 export const CartContext = createContext(null);
@@ -37,18 +37,20 @@ const safeStringify = (obj) => {
 // we need to calculate the total as well
 // { total : amount , orders : []}
 export default function CartProvider({children}){
-    let reducer = (action , state) => {
-        let act = action.toLowerCase().trim();
+    let reducer = (state , action) => {
+        let act = action.type.toLowerCase().trim();
 
-        let [ globalPrice , setGlobalPrice ] = useState(state.totalPrice);
+        // let [ globalPrice , setGlobalPrice ] = useState(state.totalPrice);
         
 
         switch (act){
             case 'add-to-cart':{
                 let added = false;
                 let { id , name , amount , price , customOrder} = action.dish;
+                console.log('adding items to cart');
+                console.log({ id , name , amount , price , customOrder})
                 // the price wld need to include the custom ordered items as well
-                let totalPriceAdded = amonut * price;
+                let totalPriceAdded = Number(amount) * Number(price);
 
 
                 let safeCustomOrder  = safeStringify(customOrder)
@@ -63,18 +65,21 @@ export default function CartProvider({children}){
                         if (item.id === id && safeStringify(item.customOrder) === safeCustomOrder){
                                 // means add the amount only
                                 added = true
-                                return { ...item ,amount : item.amount + amount }
+                                return { ...item ,amount : Number(item.amount) + amount }
                         }
+
+                        return item;
                     }
                 )
 
-                let newTotalPrice = state.totalPrice + totalPriceAdded
+                let newTotalPrice = Number(state.total) + totalPriceAdded
 
                 return {
                     ...state,
-                    totalPrice : newTotalPrice,
+                    total : Number(newTotalPrice),
                     cart : added ? final : [...cart , { id , name , amount , price , customOrder }],
-                    grandTotal : newTotalPrice
+                    grandTotal : Number(newTotalPrice) 
+                    // the difference between total and grandTotal - is grandTotal will include the delivery fee
 
             }}
             case 'remove-from-cart':{
@@ -89,16 +94,18 @@ export default function CartProvider({children}){
                 cart.forEach(
                     item => {
                         if (item.id === id && safeStringify(item.customOrder) === safeCustomOrder){
-                            priceReduced = itemRemoved.amount * itemRemoved * price;
+                            // when removed we gotta see the total price of the item removed
+                            // 
+                            priceReduced = Number(item.amount) * Number(item.price);
                         }
                     }
                 )
 
-                let newTotalPrice = state.totalPrice - priceReduced
+                let newTotalPrice = Number(state.total) - priceReduced
                 return {
                     ...state,
-                    totalPrice : newTotalPrice,
-                    grandTotal : newTotalPrice,
+                    total : Number(newTotalPrice),
+                    grandTotal : Number(newTotalPrice),
                     cart : cart.filter(
                         // the id wld be different or the custom order wld be different
                         item => !(item.id === id && safeStringify(item.customOrder) === safeCustomOrder)
@@ -107,7 +114,8 @@ export default function CartProvider({children}){
 
             case 'update-cart':{
                 let  { id , customOrder , amount , price} = action.dish;
-                let newPrice = amount * price;
+                console.log('updating the cart state');
+                let newPrice = Number(amount) * Number(price);
                 let oldPrice = 0
 
                 let safeCustomOrder  =safeStringify(customOrder);
@@ -117,26 +125,39 @@ export default function CartProvider({children}){
                 let { cart } = state;
                 cart.forEach(
                     item => {
-                        if (item.id === id && safeStringify(item.customOrder) === safeCustomOrder){
-                            oldPrice = item.amonut * item.price;
+                        if (item.id === id && safeStringify(item.customOrder) == safeCustomOrder){
+                            // we will find the difference between the price
+                            oldPrice = Number(item.amount) * Number(item.price);
+                            console.log('Old price is updated');
+                            console.log(oldPrice)
                         }
+
+                        // * there are 3 prices 
+                        // * the cart item's price
+                        // * the total price without the delivery fee
+                        // * the grand total that the person will get charged with
+                        // * so the plus will change the total and grandTotal
                     }
                     
 
                 )
 
-                let newFinalPrice = state.totalPrice - oldPrice + newPrice
+                let newFinalPrice = Number(state.total) - oldPrice + newPrice
+                console.log('Calculating the new Final price');
+                console.log(newFinalPrice)
 
                 return {
                     ...state,
-                    totalPrice : newFinalPrice,
-                    grandTotal : newFinalPrice,
+                    total : Number(newFinalPrice),
+                    grandTotal : Number(newFinalPrice),
                     cart : cart.map(
                     // the id wld be different or the custom order wld be different
                     item => {
                         if (item.id === id && safeStringify(item.customOrder) === safeCustomOrder){
                             return {...item , amount : amount , price : price}
                         }
+
+                        return item;
                         
                     }
                 )
@@ -145,7 +166,7 @@ export default function CartProvider({children}){
             case 'clear-cart':{
                 return {
                     ...state,
-                    totalPrice : 0,
+                    total : 0,
                     grandTotal : 0,
                     cart : []
                 }
@@ -155,19 +176,19 @@ export default function CartProvider({children}){
             // delivery and total will change that
             case 'update-grand-total':{
                 let amount = Number(action.amount);
-                let sign = action.sign.toLowerCase().strip();
+                let sign = action.sign.toLowerCase().trim();
                 let percentage = action.percentage || false; // if it is percentage then set this true
 
                 switch (sign){
                     case 'minus':
                         return {
                             ...state ,
-                            grandTotal : percentage ? state.grandTotal - state.grandTotal * amount :  state.grandTotal - amount
+                            grandTotal : percentage ? Number(state.grandTotal - state.grandTotal * amount) :  Number(state.grandTotal - amount)
                         }
                     case 'plus':
                         return {
                             ...state ,
-                            grandTotal : percentage ? state.grandTotal + state.grandTotal * amount :  state.grandTotal + amount
+                            grandTotal : percentage ? Number(state.grandTotal + state.grandTotal * amount) :  Number(state.grandTotal + amount)
                         }
                 }
 
@@ -181,12 +202,36 @@ export default function CartProvider({children}){
 
                 return {
                             ...state ,
-                            grandTotal : state.grandTotal + deliveryFee,
-                            deliveryFee : deliveryFee
+                            grandTotal : Number(state.grandTotal + deliveryFee),
+                            deliveryFee : Number(deliveryFee)
 
                 }
 
             }
+
+
+            // case 'update-custom-order':{
+            //     // used for updating the custom order only
+            //     let { id , customOrder } = action.dish;
+
+            //     let { cart } = state;
+
+            //     let finalCart = cart.map(
+            //         item => {
+            //             if (item.id === id){
+            //                 // edit the cart item in there
+            //                 item.customOrder = customOrder;
+            //             }
+
+            //             return item
+            //         }
+            //     )
+
+            //     return {
+            //         ...state,
+            //         cart : finalCart
+            //     }
+            // }
 
         }
     }

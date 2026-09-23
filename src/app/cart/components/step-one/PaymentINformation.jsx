@@ -1,10 +1,13 @@
 import { PRICE_OF_INSULATED_CLAY_BOX, PROMO_CODE_ARRAY } from "@/constants/variables";
-import { CartContext } from "@/providers/CartProvider";
-import { useContext, useState } from "react";
+import useCartStore from "@/stores/CartStore";
+import { useState } from "react";
 
 export default function PaymentInfo() {
-    const { state, dispatch } = useContext(CartContext);
-    const { totalPrice , grandTotal , cart } = state || {};
+    let total = useCartStore(state => state.total)
+    let grandTotal = useCartStore(state => state.grandTotal)
+    let cart = useCartStore(state => state.cart);
+    let updateGrandTotal = useCartStore(state => state.updateGrandTotal)
+    
 
     const [promoCode, setPromoCode] = useState("");
     const [promoCodeMsg, setPromoCodeMsg] = useState("");
@@ -20,8 +23,7 @@ export default function PaymentInfo() {
             setIsApplied(true);
 
             // u need to update the total
-            dispatch({
-            type: "update-grand-total",
+            updateGrandTotal({
             amount: 200,
             sign: "minus",
             });
@@ -44,7 +46,7 @@ export default function PaymentInfo() {
         <div className="payment-breakdown">
             <div className="payment-row">
             <span className="row-label">Items Subtotal</span>
-            <span className="row-value">ETB {totalPrice.toLocaleString()}</span>
+            <span className="row-value">ETB {total.toLocaleString()}</span>
             </div>
 
             <div className="payment-row">

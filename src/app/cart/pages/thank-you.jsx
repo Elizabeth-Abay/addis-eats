@@ -1,28 +1,35 @@
-import { CartContext } from "@/providers/CartProvider"; // Adjust import path if needed
 import { OrderContext } from "@/providers/OrderProvider"; // Adjust import path if needed
+import useCartStore from "@/stores/CartStore";
 import { useContext } from "react";
 import "../styles/styles.css";
 
-export default function ThankYouPage({ onBackToHome }) {
-    const cartContext = useContext(CartContext);
+export default function ThankYouPage() {
+    let cart = useCartStore(state => state.cart);
+    let total = useCartStore(state => state.total)
+    let deliveryFee = useCartStore(state => state.deliveryFee);
+    let grandTotal = useCartStore(state => state.grandTotal);
+    let clearCart = useCartStore(state => state.clearCart)
+
     const orderContext = useContext(OrderContext);
 
-    // Extract states with safe fallback values
-    const cartState = cartContext?.state || {};
     const orderState = orderContext?.state || {};
 
-    const {
-        cart = [],
-        totalPrice = 0,
-        deliveryFee = 0,
-        grandTotal = 0,
-    } = cartState;
+    let onBackToHome = () => {
+        clearCart()
+        window.location.href = "/"
+    }
 
+   
     const {
         deliveryLocation = {},
         recipientContact = {},
         paymentMethod = {},
     } = orderState;
+
+    // ! to be done
+    // once u have all the data then u can clear the cart
+    // dispatch({ type : 'clear-cart'});
+
 
     // Helper to format custom order options into readable text
     const renderCustomOptions = (customOrder) => {
@@ -50,7 +57,7 @@ export default function ThankYouPage({ onBackToHome }) {
             <div className="success-badge">
             <span className="check-mark">✓</span>
             </div>
-            <h1 className="banner-title">አመሰግናለሁ! Thank You!</h1>
+            <h1 className="banner-title"> Thank You!</h1>
             <p className="banner-subtitle">
             Your order is on the way! Our kitchen is preparing your meal with care.
             </p>
@@ -109,7 +116,7 @@ export default function ThankYouPage({ onBackToHome }) {
             <div className="receipt-totals">
             <div className="summary-row">
                 <span>Subtotal</span>
-                <span>ETB {(totalPrice || 0).toLocaleString()}</span>
+                <span>ETB {(total || 0).toLocaleString()}</span>
             </div>
             <div className="summary-row">
                 <span>Delivery Fee</span>
@@ -121,7 +128,7 @@ export default function ThankYouPage({ onBackToHome }) {
             </div>
             <div className="summary-row grand-total-row">
                 <span>Total Amount Paid</span>
-                <span>ETB {(grandTotal || totalPrice + deliveryFee).toLocaleString()}</span>
+                <span>ETB {(grandTotal || total + deliveryFee).toLocaleString()}</span>
             </div>
             </div>
 
@@ -174,7 +181,7 @@ export default function ThankYouPage({ onBackToHome }) {
         <div className="thank-you-actions">
             <button
             className="back-home-btn"
-            onClick={onBackToHome || (() => (window.location.href = "/"))}
+            onClick={onBackToHome}
             >
             Back to Menu & Home
             </button>

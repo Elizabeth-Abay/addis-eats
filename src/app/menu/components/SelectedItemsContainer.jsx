@@ -1,5 +1,4 @@
-import { CartContext } from "@/providers/CartProvider";
-import { useContext } from "react";
+import useCartStore from "@/stores/CartStore";
 import { useNavigate } from "react-router-dom";
 
 export default function SelectedItemsContainer(){
@@ -7,11 +6,12 @@ export default function SelectedItemsContainer(){
     // and when the viewBasket gets clicked then go to cart
 
     let navigate = useNavigate()
-    let { state } = useContext(CartContext);
     // we can have a total calculator and also have the number = cart.length
     // when the view basket gets clicked then u will go to the carts page
     // in the state there is cart property - and total too
-    let { totalPrice , cart} = state;
+    
+    let cart = useCartStore(state => state.cart)
+    let totalPrice = useCartStore(state => state.total)
 
     return (
         <div className="total-basket-container-in-menu">

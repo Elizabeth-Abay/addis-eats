@@ -1,13 +1,14 @@
-import { CartContext } from "@/providers/CartProvider";
-import { useContext } from "react";
+import useCartStore from "@/stores/CartStore";
 import { useNavigate } from "react-router-dom";
 
 export default function ConfirmOrderAndaPay(){
-    let { state , dispatch } = useContext(CartContext);
-    let { grandTotal } = state
-
+    let grandTotal = useCartStore(state => state.grandTotal);
+    let updateGrandTotal = useCartStore(state => state.updateGrandTotal)
+    
     let disabled = false;
     let isLoading = false;
+
+    let navigate = useNavigate()
 
     let onClick = () => {
         // when this button is clicked
@@ -15,12 +16,15 @@ export default function ConfirmOrderAndaPay(){
         // one is navigation to thank you page
         // second is clearing the cart state bc once they confirm the order and pay 
         // that is it
-        let navigate = useNavigate();
+        // let navigate = useNavigate();
+        // we should use Navigate component for navigation purpose
 
-        dispatch({ type : 'update-grand-total' , amount : grandTotal , sign : 'minus' ,  percentage : false});
-        dispatch({ type : 'clear-cart'});
+        updateGrandTotal({ amount : grandTotal , sign : 'minus' ,  percentage : false});
 
-        navigate('/thank-you')
+        // console.log('the state of the cart after confirm payment');
+        // console.log(state)
+        navigate('/thank-you' , { replace : true})
+        // returns from event handlers are ignored 
     }
     return (
         <button 

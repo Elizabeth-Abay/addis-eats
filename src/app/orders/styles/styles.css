@@ -1,0 +1,482 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+
+
+.title-container {
+  background-color: #FAF2EB;
+  padding: 24px 28px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 12px;
+  height: 30%;
+}
+
+
+
+/* Header Flex Row */
+.title-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* Left Column: Title & Spice Level */
+.title-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item-title {
+  margin: 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1F1A17;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.spice-indicators {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.spice-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Right Column: Price & Tax */
+.title-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  padding-top: 4px;
+  flex-shrink: 0;
+}
+
+.price-display {
+  color: #7D1204;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.price-display .amount {
+  font-size: 24px;
+}
+
+.tax-label {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #6E635C;
+  font-weight: 600;
+}
+
+/* Bottom Row: Description */
+.item-description {
+  margin: 16px 0 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #524741;
+  font-weight: 400;
+  max-width: 90%;
+}
+
+
+
+.spice-selector-container {
+  background-color: #FAF2EB;
+  padding: 24px;
+  border-radius: 16px;
+  max-width: 440px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Header Section */
+.spice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.step-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: #7D1204;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1F1A17;
+  letter-spacing: -0.01em;
+}
+
+.select-badge {
+  background-color: #EFE2D8;
+  color: #70635A;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+/* Cards List */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option-card {
+  display: flex;
+  align-items: flex-start;
+  background-color: #FFF5EF;
+  border-radius: 14px;
+  padding: 16px 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  gap: 14px;
+}
+
+.option-card:hover {
+  background-color: #FFF0E6;
+}
+
+/* Radio Button Checkmark */
+.radio-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #EFE3D9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
+}
+
+.radio-circle.active {
+  background-color: #7D1204;
+}
+
+/* Content Area */
+.option-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.option-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.option-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1F1A17;
+}
+
+.recommended-badge {
+  background-color: #F8C857;
+  color: #8C4700;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.option-description {
+  margin: 0;
+  font-size: 13px;
+  color: #786C65;
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+/* Flame Icons Container */
+.flames-container {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+
+.injera-selector-container {
+  background-color: #FAF2EB;
+  padding: 24px;
+  border-radius: 16px;
+  max-width: 440px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Header Section */
+.injera-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.step-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: #7D1204;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1F1A17;
+  letter-spacing: -0.01em;
+}
+
+.select-badge {
+  background-color: #EFE2D8;
+  color: #70635A;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+/* Options List */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.injera-card {
+  display: flex;
+  align-items: flex-start;
+  background-color: #FFF5EF;
+  border-radius: 14px;
+  padding: 16px 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  gap: 14px;
+}
+
+.injera-card:hover {
+  background-color: #FFF0E6;
+}
+
+/* Radio Button Checkmark */
+.radio-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #EFE3D9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
+}
+
+.radio-circle.active {
+  background-color: #7D1204;
+}
+
+/* Content Area */
+.injera-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.injera-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1F1A17;
+  line-height: 1.25;
+}
+
+/* Gluten-Free Pill Badge */
+.gf-badge {
+  background-color: #BDE9D1;
+  color: #1C5638;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.1;
+  padding: 3px 6px;
+  border-radius: 4px;
+  text-align: center;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.injera-description {
+  margin: 0;
+  font-size: 13px;
+  color: #786C65;
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+/* Right-aligned Price / Label */
+.price-tag-container {
+  display: flex;
+  align-items: center;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+.price-tag {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.price-tag.included {
+  color: #524741;
+  font-size: 15px;
+}
+
+.price-tag.extra {
+  color: #7D1204;
+}
+
+
+.not-found-container {
+  min-height: 100vh;
+  background-color: #FAF2EB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  box-sizing: border-box;
+}
+
+.not-found-card {
+  background-color: #FFF5EF;
+  border-radius: 20px;
+  padding: 36px 28px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(125, 18, 4, 0.05);
+  border: 1px solid #EFE2D8;
+  box-sizing: border-box;
+}
+
+/* Icon Section */
+.icon-badge-wrapper {
+  margin-bottom: 16px;
+}
+
+.icon-circle {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background-color: #FAF2EB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Labels & Typography */
+.not-found-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: #7D1204;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.not-found-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  margin: 0 0 12px 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: #1F1A17;
+  line-height: 1.2;
+}
+
+.not-found-text {
+  margin: 0 0 28px 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #786C65;
+  font-weight: 500;
+}
+
+/* Return Button */
+.back-menu-btn {
+  width: 100%;
+  background-color: #7D1204;
+  color: #FFFFFF;
+  border-radius: 14px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 4px 14px rgba(125, 18, 4, 0.25);
+  box-sizing: border-box;
+}
+
+.back-menu-btn:hover {
+  background-color: #630E03;
+}
+
+.back-menu-btn:active {
+  transform: scale(0.99);
+}

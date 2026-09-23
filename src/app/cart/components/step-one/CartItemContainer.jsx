@@ -1,11 +1,8 @@
-import { CartContext } from "@/providers/CartProvider";
-import { useContext } from "react";
+import useCartStore from "@/stores/CartStore";
 import CartBox from "./CartBox";
 
 export default function CartItemContainer(){
-    let { state } = useContext(CartContext);
-
-    let { cart } = state
+    let cart = useCartStore(state => state.cart);
 
     return(
         <div className="scroll-container">

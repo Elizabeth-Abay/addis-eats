@@ -1,12 +1,12 @@
-import { CartContext } from "@/providers/CartProvider";
-import { useContext } from "react";
+import useCartStore from "@/stores/CartStore";
 import { FaHandHoldingHeart } from "react-icons/fa6";
 import { HiOutlineHeart } from "react-icons/hi2";
 import { PRICE_OF_INJERA } from "../../../constants/variables";
 
 
 export default function SpiritOfGursha(){
-    let { addToCart} = useContext(CartContext)
+    let addItem = useCartStore(state => state.addItem)
+
     return (
         <div className="gursha-card">
             <div style={{
@@ -38,7 +38,7 @@ export default function SpiritOfGursha(){
                 color: '#701a06' 
                 }}>
                 <HiOutlineHeart size={20} onClick={
-                    () => addToCart({ id : 'extra-teff-wraps' , name : 'injera for gursha' , amount : 1, price : PRICE_OF_INJERA , customOrder : ''})
+                    () => addItem({ id : 'extra-teff-wraps' , name : 'injera for gursha' , amount : 1, price : PRICE_OF_INJERA , customOrder : ''})
                 } />
                 <span>Ask our team for extra teff wraps for shared Gursha</span>
             </div>

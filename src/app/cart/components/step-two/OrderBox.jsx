@@ -2,6 +2,9 @@ export default function OrderBox({item}){
 
     let { id , name , amount , price , customOrder , image} = item
 
+    let { injera , spiceLevel , sideAccents } = customOrder;
+
+    let toyKey = 1;
 
     return (
         <div className="cart-card">
@@ -13,16 +16,23 @@ export default function OrderBox({item}){
                     alt={name}
                     className="cart-img"
                     />
-                    {spicy && <span className="cart-badge">Spicy {spicy}</span>}
+                    {spiceLevel && <span className="cart-badge">spiceLevel {spiceLevel}</span>}
                 </div>
 
                 {/* Right Top: Title, Subtext, Delete Icon */}
                 <div className="cart-info">
                     <div className="cart-header">
                     <h3 className="cart-title">{name}</h3>
+                    <h3 className="cart-title">{amount}</h3>
                     </div>
 
-                    <p className="cart-subtext">{customOrder}</p>
+                    <p className="cart-subtext"> Injera - {injera}</p>
+                    <p className="cart-subtext"> Side Accents</p>
+                    {
+                        sideAccents.map(
+                            item => <p key={toyKey++} className="cart-subtext">{item}</p>
+                        )
+                    }
                 </div>
             </div>
 

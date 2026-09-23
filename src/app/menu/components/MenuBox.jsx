@@ -1,12 +1,15 @@
-import { CartContext } from "@/providers/CartProvider";
-import { useContext, useState } from "react";
+import useCartStore from "@/stores/CartStore";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function MenuBox({ dish }) {
     let {id , slug , nameEn , nameAm , category , priceETB , spiceLevel , isFasting , isSpecial , description , ingeredients } = dish;
 
+    let navigate = useNavigate()
+
     // this function is used to add a cart 
-    // we will also need to use the cartContext
-    let { addToCart } = useContext(CartContext);
+    // we will also need to use the useCartStore instead of the context
+    let addItem = useCartStore(state => state.addItem)
 
     let [ count , setCount ] = useState(1);
     
@@ -18,7 +21,7 @@ export default function MenuBox({ dish }) {
     const decrement = () => setCount(prev => prev - 1)
 
     let onAddToCart = () => {
-        addToCart({ id , name : nameEn , amount : count , price : priceETB , customOrder : {}})
+        addItem({ id , name : nameEn , amount : count , price : priceETB , customOrder : {}})
 
     }
 
@@ -26,7 +29,11 @@ export default function MenuBox({ dish }) {
     // to have a number and then have buttons to add and reduce
 
     return (
-        <div className="dish-card">
+        <div className="dish-card" onClick={
+            () =>{
+                navigate(`/item/${id}`)
+            }
+        }>
             {/* Left: Image Container with Badge */}
             <div className="dish-image-container">
                 <span className="dish-badge-category">{category}</span>

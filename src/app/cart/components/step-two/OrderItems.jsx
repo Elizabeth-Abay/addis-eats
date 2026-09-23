@@ -1,11 +1,13 @@
-import { CartContext } from "@/providers/CartProvider";
-import { useContext } from "react";
+import useCartStore from "@/stores/CartStore";
 import OrderBox from "./OrderBox";
 
 export default function OrderItems(){
-    let { state } = useContext(CartContext);
-            
-    let { cart , grandTotal , deliveryFee , totalPrice } = state
+
+    let cart = useCartStore(state => state.cart);
+    let grandTotal = useCartStore(state => state.grandTotal)
+    let deliveryFee = useCartStore(state => state.deliveryFee)
+    let total = useCartStore(state => state.total)
+    
     return (
         <div>
             <div className="scroll-container">
@@ -16,7 +18,7 @@ export default function OrderItems(){
             
             <div className="payment-holder">
                 <h3>Items Subtotal</h3>
-                <h2>{totalPrice}</h2>
+                <h2>{total}</h2>
             </div>
         </div>
     )

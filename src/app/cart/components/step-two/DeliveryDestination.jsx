@@ -1,11 +1,11 @@
 import { SUB_CITIES } from '@/constants/variables';
-import { CartContext } from '@/providers/CartProvider';
 import { OrderContext } from '@/providers/OrderProvider';
+import useCartStore from '@/stores/CartStore';
 import { useContext, useState } from 'react';
 
 
 export default function DeliveryDestination() {
-    const { dispatch } = useContext(CartContext);
+    let setDeliveryFee = useCartStore(state => state.setDeliveryFee)
     const { dispatch : orderDispatch } = useContext(OrderContext);
     const [subCity, setSubCity] = useState('Bole');
     const [houseNo, setHouseNo] = useState('Behind Edna Mall, House No. 402');
@@ -15,9 +15,7 @@ export default function DeliveryDestination() {
         e.preventDefault();
         const locationData = { subCity, houseNo, landmark };
         // based on the location update the total price
-        dispatch({ 
-            type : 'set-delivery-fee' , deliveryFee : SUB_CITIES[subCity]
-        })
+        setDeliveryFee( SUB_CITIES[subCity])
 
         orderDispatch({
             type : 'set-delivery-destination',
@@ -63,7 +61,7 @@ export default function DeliveryDestination() {
                 onChange={(e) => setSubCity(e.target.value)}
                 className="custom-select"
                 >
-                {SUB_CITIES.keys().map((city) => (
+                {Array.from(Object.keys(SUB_CITIES)).map((city) => (
                     <option key={city} value={city}>
                     {city} Sub-city
                     </option>

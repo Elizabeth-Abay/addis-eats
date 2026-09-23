@@ -1,15 +1,14 @@
-import { CartContext } from "@/providers/CartProvider";
-import { useContext } from 'react';
+import useCartStore from "@/stores/CartStore";
 import { useNavigate } from "react-router-dom";
 
 export default function CheckoutButton() {
   let navigate = useNavigate();
 
-  const { state } = useContext(CartContext);
+  let price = useCartStore(state => state.total)
 
-  const price = state.totalPrice;
 
   const formattedPrice = Number(price).toLocaleString('en-US');
+  console.log(`price is ${price} , formatted price is ${formattedPrice} `);
 
   return (
     <button className="checkout-btn" onClick={
