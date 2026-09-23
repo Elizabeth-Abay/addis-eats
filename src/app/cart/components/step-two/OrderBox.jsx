@@ -23,6 +23,7 @@ export default function OrderBox({item}){
                 <div className="cart-info">
                     <div className="cart-header">
                     <h3 className="cart-title">{name}</h3>
+                    <h3 className="cart-title">{amount}</h3>
                     </div>
 
                     <p className="cart-subtext"> Injera - {injera}</p>

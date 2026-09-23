@@ -1,11 +1,10 @@
-import { CartContext } from "@/providers/CartProvider";
-import { useContext } from "react";
+import useCartStore from "@/stores/CartStore";
 import { useNavigate } from "react-router-dom";
 
 export default function ConfirmOrderAndaPay(){
-    let { state , dispatch } = useContext(CartContext);
-    let { grandTotal } = state
-
+    let grandTotal = useCartStore(state => state.grandTotal);
+    let updateGrandTotal = useCartStore(state => state.updateGrandTotal)
+    
     let disabled = false;
     let isLoading = false;
 
@@ -20,7 +19,7 @@ export default function ConfirmOrderAndaPay(){
         // let navigate = useNavigate();
         // we should use Navigate component for navigation purpose
 
-        dispatch({ type : 'update-grand-total' , amount : grandTotal , sign : 'minus' ,  percentage : false});
+        updateGrandTotal({ amount : grandTotal , sign : 'minus' ,  percentage : false});
 
         console.log('the state of the cart after confirm payment');
         console.log(state)

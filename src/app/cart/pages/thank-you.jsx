@@ -1,29 +1,23 @@
-import { CartContext } from "@/providers/CartProvider"; // Adjust import path if needed
 import { OrderContext } from "@/providers/OrderProvider"; // Adjust import path if needed
+import useCartStore from "@/stores/CartStore";
 import { useContext } from "react";
 import "../styles/styles.css";
 
 export default function ThankYouPage() {
-    const cartContext = useContext(CartContext);
+    let cart = useCartStore(state => state.cart);
+    let total = useCartStore(state => state.total)
+    let deliveryFee = useCartStore(state => state.deliveryFee);
+    let grandTotal = useCartStore(state => state.grandTotal);
+    let clearCart = useCartStore(state => state.clearCart)
+
     const orderContext = useContext(OrderContext);
 
-    // Extract states with safe fallback values
-    const cartState = cartContext?.state || {};
     const orderState = orderContext?.state || {};
 
-    const cartDispatch = cartContext?.dispatch;
-
     let onBackToHome = () => {
-        cartDispatch({ type : 'clear-cart'});
+        clearCart()
         window.location.href = "/"
     }
-
-    const {
-        cart = [],
-        total = 0,
-        deliveryFee = 0,
-        grandTotal = 0,
-    } = cartState;
 
    
     const {

@@ -1,6 +1,5 @@
 // I gotta use Context of cart Provider
-import { CartContext } from "@/providers/CartProvider"
-import { useContext } from "react"
+import useCartStore from "@/stores/CartStore"
 import { useNavigate } from "react-router-dom"
 
 
@@ -9,8 +8,7 @@ export default function SpecialContainerBox({ container }){
 
     let navigate = useNavigate()
 
-    let { dispatch } = useContext(CartContext)
-
+    let addItem = useCartStore(state => state.addItem)
     return (
         // ! when this div gets clicked then I want it to push the new page on it
         <div className="food-card" onClick={
@@ -32,7 +30,7 @@ export default function SpecialContainerBox({ container }){
 
             {/* addToCart({ id , name , amount , price , customOrder}) */}
             {/* when it gets clicked pass the given categories to a different page */}
-            <button className="quick-add-btn" onClick={ ()=> dispatch({ type : 'add-to-cart' , dish : {id , name : nameEn , amount : 1 ,price : priceETB , customOrder : {} }})}> + Quick Add</button>
+            <button className="quick-add-btn" onClick={ ()=> addItem( {id , name : nameEn , amount : 1 ,price : priceETB , customOrder : {} })}> + Quick Add</button>
             {/* but when the whole div is clicked we gotta push some items on top */}
 
         </div>

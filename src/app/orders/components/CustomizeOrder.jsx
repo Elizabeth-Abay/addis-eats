@@ -1,8 +1,8 @@
 // make it stateful and also add the add to basket button here
 // props drilling is ok here
 
-import { CartContext } from "@/providers/CartProvider";
-import { useContext, useState } from "react";
+import useCartStore from "@/stores/CartStore";
+import { useState } from "react";
 import AddToCart from "./AddToCart";
 import AmountSetter from "./AmountSetter";
 import InjeraBaseSelector from "./InjeraSelector";
@@ -16,9 +16,9 @@ import SpiceLevelSelector from "./SpiceSelector";
 
 export default function CustomizeOrder({item }){
     let {id , name ,  price} = item;
-    let { dispatch } = useContext(CartContext)
+    let addItem = useCartStore(state => state.addItem)
 
-    // use dispatch for saying add to cart and updating the cart items
+    // use addItem for saying add to cart and updating the cart items
      // what do i want 
     // to store the custom order in some object and then when that changes
     // to update the price , the tick parts they will be handled by the elt itself
@@ -74,10 +74,7 @@ export default function CustomizeOrder({item }){
 
 
     const onAddToCart = () => {
-        dispatch({
-            type : 'add-to-cart',
-            dish : { id , name , amount  , price : totalPrice , customOrder}
-        })
+        addItem({ id , name , amount  , price : totalPrice , customOrder})
 
 
     }

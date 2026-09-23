@@ -3,12 +3,22 @@
 // { id , name , amount , price , customOrder }
 // this will be sent from the cart container
 
-import { CartContext } from "@/providers/CartProvider";
-import { useContext, useState } from "react";
+import { useState } from "react";
 
+
+import useCartStore from "@/stores/CartStore";
 
 export default function CartBox({item}){
-    let { dispatch } = useContext(CartContext)
+    let addItem = useCartStore(
+        state => state.addItem
+    )
+    let updateCart = useCartStore(
+        state => state.updateCart
+    )
+
+    let removeItem = useCartStore(
+        state => state.removeItem
+    )
 
     // this is the thing that is obtained from the cart
     let { id , name , amount , price , customOrder } = item
@@ -26,7 +36,7 @@ export default function CartBox({item}){
         // dispatch for the cart to be updated
 
         // the updated
-        dispatch({ type : 'update-cart' , dish : { id , customOrder , amount : numItem, price}})
+        updateCart({ id , customOrder , amount : numItem, price})
         // ! one thing to work on is if the user wants to edit the custom Order as well
         // customOrder Holder pass id - state and the customOrder - update the state
     
@@ -34,12 +44,12 @@ export default function CartBox({item}){
 
     let decrement = ()=>{
         setNumItem( prev => prev - 1)
-        dispatch({ type : 'update-cart' , dish : { id , customOrder , amount : numItem, price}})
+        updateCart({ id , customOrder , amount : numItem, price}) 
     }
 
     let handleRemove = ()=> {
         // to remove item from cart
-        dispatch({ type : 'remove-from-cart' , dish :{ id , customOrder}  })
+        removeItem({ id , customOrder});
     }
 
     let toyKey = 1;

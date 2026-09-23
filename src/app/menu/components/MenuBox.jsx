@@ -1,5 +1,5 @@
-import { CartContext } from "@/providers/CartProvider";
-import { useContext, useState } from "react";
+import useCartStore from "@/stores/CartStore";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function MenuBox({ dish }) {
@@ -8,8 +8,8 @@ export default function MenuBox({ dish }) {
     let navigate = useNavigate()
 
     // this function is used to add a cart 
-    // we will also need to use the cartContext
-    let { dispatch } = useContext(CartContext);
+    // we will also need to use the useCartStore instead of the context
+    let addItem = useCartStore(state => state.addItem)
 
     let [ count , setCount ] = useState(1);
     
@@ -21,7 +21,7 @@ export default function MenuBox({ dish }) {
     const decrement = () => setCount(prev => prev - 1)
 
     let onAddToCart = () => {
-        dispatch({ type : 'add-to-cart' , dish : { id , name : nameEn , amount : count , price : priceETB , customOrder : {}}})
+        addItem({ id , name : nameEn , amount : count , price : priceETB , customOrder : {}})
 
     }
 
