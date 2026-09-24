@@ -5,6 +5,7 @@ import StepOne from './app/cart/pages/step-one';
 import StepTwo from './app/cart/pages/step-two';
 import ThankYouPage from './app/cart/pages/thank-you';
 import MenuPage from './app/menu/page/menu';
+import MyAccountPage from './app/my-acc/pages/myAccountPage';
 import ItemNotFound from './app/orders/pages/NotFoundPage';
 import OrderPage from './app/orders/pages/OrderPage';
 import SpecialPage from './app/special/page/SpecialPage';
@@ -39,6 +40,7 @@ export default function App(){
 
                                 <Route path='/thank-you' element={<ThankYouPage />}/>
                                 <Route path='/item-not-found' element={<ItemNotFound />} />
+                                <Route path='/my-account' element={<MyAccountPage />} />
 
                             </Routes>
                             
