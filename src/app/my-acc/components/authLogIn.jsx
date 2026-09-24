@@ -1,5 +1,7 @@
+import { authSchema } from '@/constants/schema';
 import userStore from '@/stores/userStore';
 import { useState } from 'react';
+import { useErrorBoundary } from 'react-error-boundary';
 
 export default function AuthLoginForm() {
     // State for active tab: 'mobile' or 'email'
@@ -18,6 +20,25 @@ export default function AuthLoginForm() {
         e.preventDefault();
         // if there is email then call the email setter
         // else call the phone number setter
+        let payload = authMethod === 'mobile'
+        ? { authMethod, mobileNumber, password }
+        : { authMethod, email, password };
+
+        const result = authSchema.safeParse(payload);
+        
+
+        if (!result.success) {
+            let { showBoundary} = useErrorBoundary()
+            // Format Zod issues into a key-value error object: { mobileNumber: "Invalid...", ... }
+            const formattedErrors = {};
+            result.error.issues.forEach((issue) => {
+                formattedErrors[issue.path[0]] = issue.message;
+                console.log(issue.path[0])
+            });
+            showBoundary(new Error('Something happened'));
+            return;
+        }
+
         if (authMethod === 'mobile'){
             setPasswordAndPhone({passwordNew : password, phoneNew : mobileNumber})
         }else {

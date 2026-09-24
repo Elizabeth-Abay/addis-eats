@@ -74,6 +74,7 @@ export default function CartBox({item}){
                     className="cart-img"
                     />
                     {spiceLevel && <span className="cart-badge"> SpiceLevel {spiceLevel}</span>}
+                    {injera &&  <span className="cart-badge"> injera {injera}</span> }
                 </div>
 
                 {/* Right Top: Title, Subtext, Delete Icon */}
@@ -93,7 +94,7 @@ export default function CartBox({item}){
                     <p className="cart-subtext"> Injera - {injera}</p>
                     <p className="cart-subtext"> Side Accents</p>
                     {
-                        sideAccents.map(
+                        sideAccents?.map(
                             item => <p key={toyKey++} className="cart-subtext">{item}</p>
                         )
                     }

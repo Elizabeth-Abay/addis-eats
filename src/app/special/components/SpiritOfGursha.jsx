@@ -24,6 +24,7 @@ export default function SpiritOfGursha() {
         overflow: "hidden",
         padding: "26px",
         borderRadius: "24px",
+        width: "100%",
         background:
           "linear-gradient(135deg, rgba(38, 20, 14, 0.95) 0%, rgba(18, 9, 5, 0.98) 100%)",
         border: "1px solid rgba(245, 158, 11, 0.25)",

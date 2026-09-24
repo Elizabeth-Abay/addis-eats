@@ -198,6 +198,16 @@ body {
   scrollbar-width: none; /* Hide scrollbar for clean UI */
 }
 
+.category-result-container,
+.food-cards-list {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  position: relative; /* Prevents height collapse */
+  clear: both;
+}
+
+
 .category-result-container::-webkit-scrollbar {
   display: none;
 }
@@ -287,3 +297,8 @@ body {
 }
 
 
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

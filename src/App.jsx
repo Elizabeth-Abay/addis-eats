@@ -1,20 +1,23 @@
+import { lazy, Suspense } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-
-
-import StepOne from './app/cart/pages/step-one';
-import StepTwo from './app/cart/pages/step-two';
-import ThankYouPage from './app/cart/pages/thank-you';
-import MenuPage from './app/menu/page/menu';
-import MyAccountPage from './app/my-acc/pages/myAccountPage';
-import ItemNotFound from './app/orders/pages/NotFoundPage';
-import OrderPage from './app/orders/pages/OrderPage';
-import SpecialPage from './app/special/page/SpecialPage';
+import MyErrorFallback from "./components/ErrorBoundary";
 import Footer from './components/Footer';
 import Header from './components/Header';
-import CartProvider from './providers/CartProvider';
-import MenuProvider from './providers/MenuProvider';
-import OrderProvider from './providers/OrderProvider';
-import ReservationProvider from './providers/ReservationProvider';
+import FullPageSpinner from "./components/Spinner";
+
+// lazy loading
+const StepOne = lazy( () => import('./app/cart/pages/step-one'))
+const StepTwo = lazy(() => import('./app/cart/pages/step-two'));
+const ThankYouPage = lazy(() => import('./app/cart/pages/thank-you')) ;
+const MenuPage = lazy(() => import('./app/menu/page/menu')) ;
+const MyAccountPage = lazy(() => import('./app/my-acc/pages/myAccountPage')) ;
+const ItemNotFound = lazy(() => import('./app/orders/pages/NotFoundPage')) ;
+const OrderPage = lazy(() => import('./app/orders/pages/OrderPage')) ;
+const SpecialPage = lazy(() => import('./app/special/page/SpecialPage')) ;
+const MenuProvider = lazy(() => import('./providers/MenuProvider')) ;
+const OrderProvider = lazy(() => import( './providers/OrderProvider'));
+const ReservationProvider = lazy(() => import( './providers/ReservationProvider'));
 
 // ! fill in the checkout page here
 
@@ -22,12 +25,13 @@ export default function App(){
     // there will be a header and footer in all the components
     return (
         <div className='App'>
-            <OrderProvider>
+                <OrderProvider>
                 <MenuProvider>
-                <CartProvider>
                     <ReservationProvider>
-                        <Router>
-                            <Header></Header>
+                        <Suspense fallback={<FullPageSpinner/>} >
+                            <Router>
+                                <ErrorBoundary FallbackComponent={MyErrorFallback}>
+                                    <Header></Header>
                             <Routes>
                                 {/* this are the things that will change */}
                                 {/* in the real part the register will be the one there */}
@@ -46,13 +50,16 @@ export default function App(){
                             
                             <Footer></Footer>
                         
-                        </Router>
+                        
+                                </ErrorBoundary>
+                            </Router>
+                            
+                        </Suspense>
+        
                     </ReservationProvider>
-                </CartProvider>
             </MenuProvider>
             </OrderProvider>
-            
-            
+        
         </div>
 
     )

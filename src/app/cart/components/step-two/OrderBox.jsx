@@ -29,7 +29,7 @@ export default function OrderBox({item}){
                     <p className="cart-subtext"> Injera - {injera}</p>
                     <p className="cart-subtext"> Side Accents</p>
                     {
-                        sideAccents.map(
+                        sideAccents?.map(
                             item => <p key={toyKey++} className="cart-subtext">{item}</p>
                         )
                     }
