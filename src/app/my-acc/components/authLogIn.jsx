@@ -33,7 +33,7 @@ export default function AuthLoginForm() {
             const formattedErrors = {};
             result.error.issues.forEach((issue) => {
                 formattedErrors[issue.path[0]] = issue.message;
-                console.log(issue.path[0])
+                //console.log(issue.path[0])
             });
             showBoundary(new Error('Something happened'));
             return;

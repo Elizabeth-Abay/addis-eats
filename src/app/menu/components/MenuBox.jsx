@@ -88,11 +88,12 @@ export default function MenuBox({ dish }) {
         transition: "transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease",
         color: "#ffffff",
         position: "relative",
+        margin : "10px"
       }}
     >
       {/* Top Image Banner */}
       <div style={{ position: "relative", height: "170px", overflow: "hidden" }}>
-        <img
+        {/* <img
           src={image || "/images/shiro-bozena.jpg"}
           alt={nameEn}
           style={{
@@ -101,7 +102,7 @@ export default function MenuBox({ dish }) {
             objectFit: "cover",
             transition: "transform 0.4s ease",
           }}
-        />
+        /> */}
         {/* Dark Vignette Overlay */}
         <div
           style={{

@@ -14,8 +14,8 @@ export const ReservationContext = createContext('null');
 export default function ReservationProvider({children}){
     let [ reservation , setReservation ] = useState([]);
     // reservation is working
-    // console.log('reservation added');
-    // console.log(reservation)
+    // //console.log('reservation added');
+    // //console.log(reservation)
 
 
     // price cld be set up and be constant instead of sthg passed from outside

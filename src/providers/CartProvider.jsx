@@ -47,8 +47,8 @@ export default function CartProvider({children}){
             case 'add-to-cart':{
                 let added = false;
                 let { id , name , amount , price , customOrder} = action.dish;
-                console.log('adding items to cart');
-                console.log({ id , name , amount , price , customOrder})
+                //console.log('adding items to cart');
+                //console.log({ id , name , amount , price , customOrder})
                 // the price wld need to include the custom ordered items as well
                 let totalPriceAdded = Number(amount) * Number(price);
 
@@ -114,7 +114,7 @@ export default function CartProvider({children}){
 
             case 'update-cart':{
                 let  { id , customOrder , amount , price} = action.dish;
-                console.log('updating the cart state');
+                //console.log('updating the cart state');
                 let newPrice = Number(amount) * Number(price);
                 let oldPrice = 0
 
@@ -128,8 +128,8 @@ export default function CartProvider({children}){
                         if (item.id === id && safeStringify(item.customOrder) == safeCustomOrder){
                             // we will find the difference between the price
                             oldPrice = Number(item.amount) * Number(item.price);
-                            console.log('Old price is updated');
-                            console.log(oldPrice)
+                            //console.log('Old price is updated');
+                            //console.log(oldPrice)
                         }
 
                         // * there are 3 prices 
@@ -143,8 +143,8 @@ export default function CartProvider({children}){
                 )
 
                 let newFinalPrice = Number(state.total) - oldPrice + newPrice
-                console.log('Calculating the new Final price');
-                console.log(newFinalPrice)
+                //console.log('Calculating the new Final price');
+                //console.log(newFinalPrice)
 
                 return {
                     ...state,

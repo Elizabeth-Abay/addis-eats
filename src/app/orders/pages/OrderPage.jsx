@@ -19,8 +19,8 @@ export default function OrderPage(){
         menu => menu.id === itemId
     )
 
-    console.log('item found ');
-    console.log(itemFound)
+    //console.log('item found ');
+    //console.log(itemFound)
 
     // u shld have useEffect
     if (!itemFound) return <Navigate to="/item-not-found" replace />;

@@ -1,4 +1,5 @@
-import { useEffect, useReducer } from "react";
+import FullPageSpinner from "@/components/Spinner";
+import { useEffect, useReducer, useState } from "react";
 import { FaRegStar } from "react-icons/fa6";
 import CategoryFilter from "../../../components/CategoryFilter";
 import SpecialContainerBox from "./SpecialContainerBox";
@@ -16,7 +17,22 @@ import SpecialContainerBox from "./SpecialContainerBox";
 export default function CategoryResultContainer(){
     // useReducer is used for having one state instead of 2 separate things
     // the state would be the result of using useEffect
-    
+
+    let [ loading , setLoading]   = useState(true);
+    let [  error , setError ] = useState('')
+
+
+    { loading &&
+        <FullPageSpinner />
+    }
+
+    {
+        error &&
+        <div className="error">
+            Error happened {error}
+        </div>
+    }
+
 
 
         // state and action 
@@ -24,8 +40,8 @@ export default function CategoryResultContainer(){
     // in ts - define the values u want in there { count : number , error : string }
     // and action will be used to create things - {type : 'increment' | 'decrement'}
     const filterCategory = (state ,  action) => {
-        console.log('state in filter categoryy')
-        console.log(state)
+        //console.log('state in filter categoryy')
+        //console.log(state)
     // the state here will be the specials box
     // action.type = will be the type passed when u first create the item
     // it will return the state with its properties updated
@@ -103,10 +119,11 @@ export default function CategoryResultContainer(){
                     // this will fetch the things first and then emit the data with set_all
                     // which the dispatch will listen to and set the state correctly
                     dispatch({type : 'set_all' , data : result.data})
+                    setLoading(false)
 
 
                 } catch (err){
-                    console.log(`Error while calling useEffect in  CategoryResultContainer ${err.message}`)
+                    //console.log(`Error while calling useEffect in  CategoryResultContainer ${err.message}`)
                 }
             }
 
@@ -114,6 +131,7 @@ export default function CategoryResultContainer(){
 
         } , []
     )
+
 
     
 

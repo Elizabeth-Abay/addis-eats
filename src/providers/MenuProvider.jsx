@@ -13,8 +13,8 @@ export default function MenuProvider({children}){
         let act = action.type.toLowerCase();
         switch (act){
             case 'add-menu':
-                // console.log('Rendered thigns');
-                console.log(action.menu)
+                // //console.log('Rendered thigns');
+                //console.log(action.menu)
                 return {all : action.menu , rendered : action.menu}
             case 'traditional stews & wat':
                 return { 
@@ -72,9 +72,9 @@ export default function MenuProvider({children}){
     });
 
 
-    // console.log('state from menu Provider');
+    // //console.log('state from menu Provider');
 
-    // console.log(state)
+    // //console.log(state)
 
     // then pass the menu through the context
     // it will also need to have a filter components
