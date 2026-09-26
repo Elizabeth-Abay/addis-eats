@@ -16,7 +16,7 @@ export default function MenuContainer(){
     }
 
     {
-        error &&
+        error != '' &&
         <div className="error">
             Error happened {error}
         </div>
@@ -49,6 +49,7 @@ export default function MenuContainer(){
 
                 }catch(err){
                     //console.error("Error fetching menu:", err);
+                    setError(err.message)
 
                 }
                 

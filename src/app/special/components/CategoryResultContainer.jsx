@@ -27,7 +27,7 @@ export default function CategoryResultContainer(){
     }
 
     {
-        error &&
+        error != '' &&
         <div className="error">
             Error happened {error}
         </div>
@@ -123,7 +123,8 @@ export default function CategoryResultContainer(){
 
 
                 } catch (err){
-                    //console.log(`Error while calling useEffect in  CategoryResultContainer ${err.message}`)
+                    // console.log(`Error while calling useEffect in  CategoryResultContainer ${err.message}`)
+                    setError(err.message)
                 }
             }
 
